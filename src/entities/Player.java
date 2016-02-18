@@ -54,5 +54,13 @@ public class Player extends Entity{
     }
     private void move(int speed){
         x+=speed;
+        int want = x;
+        if(x<WALK_BORDER_LEFT){
+            x=WALK_BORDER_LEFT;
+            Main.level.move(-1);
+        }else if(x>Main.panel.getWidth()-WALK_BORDER_RIGHT){
+            x = Main.panel.getWidth()-WALK_BORDER_RIGHT;
+            Main.level.move(-1);
+        }
     }
 }
