@@ -18,7 +18,7 @@ public class Main extends Thread{
 
     public static int money = 0;
     public static Upgrade[] upgrades = new Upgrade[3];
-    public static Player player = new Player(0,0);
+    public static Player player;
     public static ArrayList<Enemy> activeEnemies=new ArrayList<>();
     public static void main(String [ ] args){
         frame.setSize(1600, 900);
@@ -31,6 +31,7 @@ public class Main extends Thread{
         panel.setFocusable(true);
         frame.setResizable(false);
         loadStuff();
+        player = new Player(0,panel.getHeight()-Player.PLAYER_SIZE);
         new Main().start();
     }
 

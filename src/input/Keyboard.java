@@ -13,9 +13,7 @@ public class Keyboard implements KeyListener{
 
     @Override
     public void keyTyped(KeyEvent e) {
-System.out.println("key typed");
-
-
+        System.out.println("key typed");
     }
 
     @Override
