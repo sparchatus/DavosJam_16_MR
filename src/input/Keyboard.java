@@ -14,12 +14,12 @@ public class Keyboard implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e){
-
+        pressedButtons.add(e.getKeyCode());
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        pressedButtons.remove(e.getKeyCode());
     }
 
 }

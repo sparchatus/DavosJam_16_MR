@@ -3,8 +3,10 @@ import javax.swing.*;
 import graphics.GamePanel;
 
 public class Main extends Thread{
-    public static JFrame frame = new JFrame("MASTERRACE");
-    public static GamePanel panel = new GamePanel();
+    private static JFrame frame = new JFrame("MASTERRACE");
+    private static GamePanel panel = new GamePanel();
+    private static long lastCycleTime = 0;
+    private static final int TICKS = 30;
 
 
     public static void main(String [ ] args){
@@ -19,9 +21,23 @@ public class Main extends Thread{
 
     public void run(){
         while (true){
-            panel.repaint();
+            if(System.currentTimeMillis() > lastCycleTime + 1000/TICKS){
+                lastCycleTime = System.currentTimeMillis();
+                update();
+                panel.repaint();
+            }
+            try{
+                Thread.sleep(1000/TICKS - (System.currentTimeMillis() - lastCycleTime));
+            }catch(Exception e){
+                //ignore
+            }
         }
     }
+
+    private synchronized void update(){
+        //bla
+    }
+
 }
 
 
