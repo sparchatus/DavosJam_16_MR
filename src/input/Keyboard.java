@@ -5,7 +5,11 @@ import java.awt.event.KeyListener;
 import java.util.HashSet;
 
 public class Keyboard implements KeyListener{
-    HashSet<Integer> pressedButtons = new HashSet<Integer>();
+    private HashSet<Integer> pressedKeys = new HashSet<Integer>();
+
+    public HashSet<Integer> getPressedKeys(){
+        return pressedKeys;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -14,12 +18,12 @@ public class Keyboard implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e){
-        pressedButtons.add(e.getKeyCode());
+        pressedKeys.add(e.getKeyCode());
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        pressedButtons.remove(e.getKeyCode());
+        pressedKeys.remove(e.getKeyCode());
     }
 
 }

@@ -1,12 +1,15 @@
-import javax.swing.*;
-
+import com.sun.javafx.geom.Vec2f;
 import graphics.GamePanel;
+import input.Keyboard;
+
+import javax.swing.*;
 
 public class Main extends Thread{
     private static JFrame frame = new JFrame("MASTERRACE");
     private static GamePanel panel = new GamePanel();
     private static long lastCycleTime = 0;
     private static final int TICKS = 30;
+    private static Vec2f mouseClick;
 
 
     public static void main(String [ ] args){
@@ -36,6 +39,11 @@ public class Main extends Thread{
 
     private synchronized void update(){
         //bla
+        mouseClick = null;
+    }
+    Keyboard
+    public static void setMouseClick(Vec2f vec){
+        mouseClick = vec;
     }
 
 }
