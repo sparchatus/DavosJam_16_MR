@@ -1,6 +1,6 @@
 package input;
 
-import Main;
+import main.Main;
 
 import com.sun.javafx.geom.Vec2f;
 

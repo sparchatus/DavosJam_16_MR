@@ -1,8 +1,9 @@
+package main;
+
 import com.sun.javafx.geom.Vec2f;
 import entities.Enemy;
 import entities.Player;
 import graphics.GamePanel;
-import input.Keyboard;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class Main extends Thread{
         //bla
         mouseClick = null;
     }
-    
+
     public static void setMouseClick(Vec2f vec){
         mouseClick = vec;
     }
