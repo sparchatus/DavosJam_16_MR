@@ -18,7 +18,7 @@ public class Main extends Thread{
     private static Vec2f mouseClick;
 
     public static Level level;
-    public static int money = 10000;
+    public static int money = 1000000;
     public static Upgrade[] upgrades = new Upgrade[3];
     public static Player player;
     public static ArrayList<Enemy> activeEnemies=new ArrayList<>();
@@ -41,18 +41,8 @@ public class Main extends Thread{
         upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
         upgrades[1] = new Upgrade("Health", null, 10);
         upgrades[2] = new Upgrade("Speed", null, 10);
-        panel.repaint();
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Upgrade.size = GamePanel.upgradeIconSize;
-        Upgrade.y = (GamePanel.upgradeBarHeight - GamePanel.upgradeIconSize) / 2;
-        for(int i = 0; i < upgrades.length; ++i){
-            upgrades[i].x = i * panel.getWidth() / Main.upgrades.length + Upgrade.size / 2;
 
-        }
+
         level = new Level();
     }
 
@@ -78,8 +68,9 @@ public class Main extends Thread{
     }
 
     private synchronized void update(){
-        //bla
+        System.out.println("update");
         if(mouseClick != null) {
+            System.out.println("mouse clicked at " + mouseClick.x + ' ' + mouseClick.y);
             for (Upgrade u : upgrades) {
                 if (money >= u.cost && mouseClick.x >= u.x && mouseClick.x <= u.x + Upgrade.size && mouseClick.y >= Upgrade.y
                         && mouseClick.y <= Upgrade.y + Upgrade.size) {

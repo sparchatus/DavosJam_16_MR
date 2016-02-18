@@ -27,6 +27,9 @@ public class Upgrade {
     }
 
     public Graphics render(Graphics g){
+        //System.out.println("x " + x + ", y " + y + ", size " + size);
+
+
         g.setColor(Color.BLACK);
         g.fillRect(x, y, size, size);
         g.setFont(new Font("Calibri", 0, 24));
