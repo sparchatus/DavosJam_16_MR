@@ -11,5 +11,10 @@ public class GamePanel extends JPanel {
         g.setColor(new Color(0xffe4e1));
         g.drawRect(0, 0, this.getWidth(), this.getHeight());
         g.drawLine(0, 0, 150, 200);
+        render(g);
+    }
+
+    private void render(Graphics g){
+
     }
 }
