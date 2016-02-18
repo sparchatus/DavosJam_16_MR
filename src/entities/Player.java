@@ -16,8 +16,8 @@ public class Player extends Entity{
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
     public static int PLAYER_SIZE=256;
-    public static int WALK_BORDER_LEFT = PLAYER_SIZE;
-    public static int WALK_BORDER_RIGHT = (int) (PLAYER_SIZE*1.5);
+    public static int WALK_BORDER_LEFT = PLAYER_SIZE/2;
+    public static int WALK_BORDER_RIGHT = PLAYER_SIZE*3;
 
     private int lastAttackChange=0;
     private boolean attacking = false;
@@ -57,10 +57,10 @@ public class Player extends Entity{
         int want = x;
         if(x<WALK_BORDER_LEFT){
             x=WALK_BORDER_LEFT;
-            Main.level.move(-1);
+            Main.level.move(x-want);
         }else if(x>Main.panel.getWidth()-WALK_BORDER_RIGHT){
             x = Main.panel.getWidth()-WALK_BORDER_RIGHT;
-            Main.level.move(-1);
+            Main.level.move(x-want);
         }
     }
 }

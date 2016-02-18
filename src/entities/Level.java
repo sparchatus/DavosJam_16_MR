@@ -15,12 +15,13 @@ public class Level extends Entity{
     private final int WIDTH = 20;
     private final int HEIGHT = 6;
     private final int TILE_SIDE = 64;
-    private static int TILE_SCREEN_SIZE;
+    public static int TILE_SCREEN_SIZE;
     public static Tile[][] levelMap = new Tile[6][20];
 
     public Level() {
         super(0, 0);
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
+        Main.player.y-=TILE_SCREEN_SIZE;
         setTiles("Level_1.png");
     }
 
@@ -52,16 +53,13 @@ public class Level extends Entity{
     public void move(int speed){
         x+=speed;
         if(x>0)x=0;
-        else if(x<WIDTH*TILE_SCREEN_SIZE)x=WIDTH*TILE_SCREEN_SIZE;
+        else if(x<-(WIDTH*TILE_SCREEN_SIZE-Main.panel.getWidth()))x=-(WIDTH*TILE_SCREEN_SIZE-Main.panel.getWidth());
     }
     public void render(Graphics g){
         for(int i = 0; i < levelMap.length; ++i) {
             for (int j = 0; j < levelMap[0].length; ++j) {
                 int xc = j*TILE_SCREEN_SIZE+x;
                 int yc = i*TILE_SCREEN_SIZE;
-                if(xc<-TILE_SCREEN_SIZE||xc>Main.panel.getWidth()){
-                    continue;
-                }
                 g.drawImage(levelMap[i][j].img,xc,yc,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
             }
         }
