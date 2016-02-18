@@ -2,15 +2,14 @@ package Tiles;
 
 import java.awt.image.BufferedImage;
 
-/**
- * Created by Sandro on 18/02/2016.
- */
 public class Tile {
     public BufferedImage img;
     public TileTypes type;
+    public boolean solid;
 
-    public  Tile(BufferedImage i, TileTypes t){
+    public  Tile(BufferedImage i, TileTypes t, boolean s){
         img = i;
         type = t;
+        solid = s;
     }
 }

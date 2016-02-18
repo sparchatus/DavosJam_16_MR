@@ -11,9 +11,11 @@ public class Player extends Entity{
 
     public static int maxLife;
     public static int life;
+    private int speed=5;
     private BufferedImage img;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
+    private final int WALK_BORDERS = PLAYER_SIZE*2;
     public static int PLAYER_SIZE=256;
     private int lastAttackChange=0;
     private boolean attacking = false;
@@ -31,7 +33,8 @@ public class Player extends Entity{
 
     @Override
     public void update() {
-        move();
+        if(Keyboard.getPressedKeys(65))move(-speed);
+        if(Keyboard.getPressedKeys(68))move(speed);
         if(Keyboard.getPressedKeys(32)){
             startAttack();
         }
@@ -46,10 +49,16 @@ public class Player extends Entity{
             attacking = true;
             lastAttackChange = Main.tick;
         }
-
     }
-    private void move(){
-        if(Keyboard.getPressedKeys(65))--x;
-        if(Keyboard.getPressedKeys(68))++x;
+    private void move(int speed){
+        if(x+speed>Main.panel.getWidth()-WALK_BORDERS){
+            x+=Main.panel.getWidth()-WALK_BORDERS-x;
+            Main.level.move((Main.panel.getWidth()-WALK_BORDERS-x)-speed);
+        }else if(x+speed<Main.panel.getWidth()-WALK_BORDERS){
+            x+=WALK_BORDERS-x;
+            Main.level.move((WALK_BORDERS-x)-speed);
+        }else{
+            x+=speed;
+        }
     }
 }
