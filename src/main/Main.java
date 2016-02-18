@@ -15,6 +15,9 @@ public class Main extends Thread{
     private static final int TICKS = 30;
     private static Vec2f mouseClick;
 
+
+    public static int money = 0;
+    public static Upgrade[] upgrades = new Upgrade[3];
     private Player player = new Player(0,0);
     private ArrayList<Enemy> activeEnemies=new ArrayList<>();
 
@@ -26,7 +29,14 @@ public class Main extends Thread{
         panel.setSize(frame.getSize());
         frame.add(panel);
         frame.setVisible(true);
+        loadStuff();
         new Main().start();
+    }
+
+    private static void loadStuff(){
+        upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
+        upgrades[1] = new Upgrade("Health", null, 10);
+        upgrades[2] = new Upgrade("Speed", null, 10);
     }
 
     private void startDataSetup(){
