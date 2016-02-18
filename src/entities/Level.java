@@ -32,14 +32,14 @@ public class Level extends Entity{
         Tile earth, floor, sky;
         earth = new Tile(PictureImport.importImage("Tile_Earth.png"), TileTypes.EARTH, true);
         floor = new Tile(PictureImport.importImage("Tile_Floor.png"), TileTypes.FLOOR, true);
-        sky = new Tile(PictureImport.importImage("default"), TileTypes.SKY, false);
+        sky = new Tile(PictureImport.importImage("Tile_Sky.png"), TileTypes.SKY, false);
 
         for(int i = 0; i < pixel.getHeight(); ++i){
             for(int j = 0; j < pixel.getWidth(); ++j){
                 int t = pixel.getRGB(j,i);
-                if(t==0x000000){
+                if(t==0xff000000){
                     levelMap[i][j]=earth;
-                }else if(t==0xffffff){
+                }else if(t==0xffffffff){
                     levelMap[i][j]=floor;
                 }else{
                     levelMap[i][j]=sky;
@@ -52,7 +52,7 @@ public class Level extends Entity{
     public void move(int speed){
         x+=speed;
         if(x>0)x=0;
-        else if(x<WIDTH*TILE_SIDE)x=WIDTH*TILE_SIDE;
+        else if(x<WIDTH*TILE_SCREEN_SIZE)x=WIDTH*TILE_SCREEN_SIZE;
     }
     public void render(Graphics g){
         for(int i = 0; i < levelMap.length; ++i) {
