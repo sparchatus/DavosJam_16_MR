@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DavosJam_16_MR.iml" filepath="$PROJECT_DIR$/DavosJam_16_MR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/DavosJam_16_MR.iml" filepath="$PROJECT_DIR$/.idea/DavosJam_16_MR.iml" />
     </modules>
   </component>
 </project>
