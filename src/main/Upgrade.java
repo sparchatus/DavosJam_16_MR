@@ -24,9 +24,10 @@ public class Upgrade {
     }
 
     public Graphics render(Graphics g, int x, int y, int size){
-        System.out.println(size);
         g.setColor(Color.BLACK);
         g.fillRect(x, y, size, size);
+        g.setFont(new Font("Calibri", 0, 24));
+        g.drawString(NAME + '(' + cost + "$)", (int)(x + 1.5f * size), y + (size + g.getFont().getSize()) / 2);
 
         return g;
     }

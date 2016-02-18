@@ -36,7 +36,7 @@ public class GamePanel extends JPanel {
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
         for(int i = 0; i < Main.upgrades.length; ++i){
-            Main.upgrades[i].render(g, (i + 1) * this.getWidth() / (Main.upgrades.length + 1),
+            Main.upgrades[i].render(g, i * this.getWidth() / Main.upgrades.length + upgradeIconSize / 2,
                     (upgradeBarHeight - upgradeIconSize) / 2, upgradeIconSize);
         }
 
