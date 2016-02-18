@@ -1,5 +1,7 @@
 package entities;
 
+import input.Keyboard;
+import javafx.scene.input.KeyCode;
 import util.PictureImport;
 
 import java.awt.*;
@@ -10,6 +12,7 @@ public class Player extends Entity{
     private int maxLife;
     private int life;
     private BufferedImage img;
+    private final int ;
 
     public Player(int xCoordinate, int yCoordinate){
         super(xCoordinate,yCoordinate);
@@ -22,4 +25,14 @@ public class Player extends Entity{
         g.drawImage(img,x,y,null);
     }
 
+    @Override
+    public void update() {
+        move();
+    }
+
+    private void move(){
+        if(Keyboard.getPressedKeys(KeyCode)){
+
+        }
+    }
 }

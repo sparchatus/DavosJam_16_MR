@@ -5,9 +5,9 @@ import java.awt.event.KeyListener;
 import java.util.HashSet;
 
 public class Keyboard implements KeyListener{
-    private HashSet<Integer> pressedKeys = new HashSet<Integer>();
+    private static HashSet<Integer> pressedKeys = new HashSet<Integer>();
 
-    public HashSet<Integer> getPressedKeys(){
+    public static HashSet<Integer> getPressedKeys(){
         return pressedKeys;
     }
 
@@ -25,5 +25,4 @@ public class Keyboard implements KeyListener{
     public void keyReleased(KeyEvent e) {
         pressedKeys.remove(e.getKeyCode());
     }
-
 }
