@@ -1,14 +1,21 @@
 package graphics;
 
 import entities.Enemy;
+import input.Keyboard;
+import input.Mouse;
 import main.Main;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
+    private static final int UPGRADE_BAR_HEIGHT = Main.frame.getHeight() / 10;
+
+
     public GamePanel(){
         this.setBackground(Color.PINK);
+        this.addKeyListener(new Keyboard());
+        this.addMouseListener(new Mouse());
     }
     @Override
     protected void paintComponent(Graphics g){
@@ -23,5 +30,8 @@ public class GamePanel extends JPanel {
         for(Enemy e:Main.activeEnemies){
             e.render(g);
         }
+        g.setColor(Color.GRAY);
+        g.fillRect(0, 0, this.getWidth(), UPGRADE_BAR_HEIGHT);
+
     }
 }

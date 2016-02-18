@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Main extends Thread{
-    private static JFrame frame = new JFrame("MASTERRACE");
+    public static JFrame frame = new JFrame("MASTERRACE");
     private static GamePanel panel = new GamePanel();
     private static long lastCycleTime = 0;
     private static final int TICKS = 30;
