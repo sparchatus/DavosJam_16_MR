@@ -19,7 +19,7 @@ public class Level extends Entity{
     public static Tile[][] levelMap = new Tile[6][20];
 
     public Level() {
-        super(0, 0);
+        super(0,0,0,0,null);
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
         Main.player.y-=TILE_SCREEN_SIZE;
         setTiles("Level_1.png");

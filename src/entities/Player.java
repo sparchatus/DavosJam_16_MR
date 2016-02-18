@@ -12,7 +12,8 @@ public class Player extends Entity{
     public static int maxLife;
     public static int life;
     public static int speed=5;
-    private BufferedImage img;
+    private static boolean moving = false;
+    private BufferedImage img, img1, _img, _img1;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
     public static int PLAYER_SIZE=256;
@@ -23,20 +24,25 @@ public class Player extends Entity{
     private boolean attacking = false;
 
     public Player(int xCoordinate, int yCoordinate){
-        super(xCoordinate,yCoordinate);
+        super(xCoordinate,yCoordinate, PLAYER_SIZE, PLAYER_SIZE, PictureImport.importImage("Einhorn_1.png"));
         maxLife = 1000;
         life = maxLife;
-        img= PictureImport.importImage("Einhorn_1.png");
+        _img=img = PictureImport.importImage("Einhorn_1.png");
+        _img1=img1 = PictureImport.importImage("Einhorn_2.png");
     }
 
     public void render(Graphics g){
-        g.drawImage(img,x,y,PLAYER_SIZE,PLAYER_SIZE,null);
+        if(speed>0){
+
+        }
+        super.render(g);
     }
 
     @Override
     public void update() {
-        if(Keyboard.getPressedKeys(65))move(-speed);
-        if(Keyboard.getPressedKeys(68))move(speed);
+        if(Keyboard.getPressedKeys(65))move(-1);
+        else if(Keyboard.getPressedKeys(68))move(1);
+        else moving = false;
         if(Keyboard.getPressedKeys(32)){
             startAttack();
         }
@@ -52,15 +58,23 @@ public class Player extends Entity{
             lastAttackChange = Main.tick;
         }
     }
-    private void move(int speed){
+    private void move(int i){
+        if(i==1){
+            speed=Math.abs(speed);
+        }else{
+            speed=-Math.abs(speed);
+        }
+        moving=true;
         x+=speed;
         int want = x;
         if(x<WALK_BORDER_LEFT){
             x=WALK_BORDER_LEFT;
             Main.level.move(x-want);
+            moving=false;
         }else if(x>Main.panel.getWidth()-WALK_BORDER_RIGHT){
             x = Main.panel.getWidth()-WALK_BORDER_RIGHT;
             Main.level.move(x-want);
+            moving = false;
         }
     }
 }
