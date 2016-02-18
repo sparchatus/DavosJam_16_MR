@@ -14,6 +14,7 @@ public class Player extends Entity{
     private BufferedImage img;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
+    public static int PLAYER_SIZE=256;
     private int lastAttackChange=0;
     private boolean attacking = false;
 
@@ -25,7 +26,7 @@ public class Player extends Entity{
     }
 
     public void render(Graphics g){
-        g.drawImage(img,x,y,null);
+        g.drawImage(img,x,y,PLAYER_SIZE,PLAYER_SIZE,null);
     }
 
     @Override
