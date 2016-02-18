@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Upgrade {
@@ -20,6 +21,13 @@ public class Upgrade {
         Main.money -= cost;
         ++level;
         cost *= costMultiplier;
+    }
+
+    public Graphics render(Graphics g, int x, int y, int size){
+        g.setColor(Color.BLACK);
+        g.fillRect(x, y, x + size, y + size);
+
+        return g;
     }
 
 }

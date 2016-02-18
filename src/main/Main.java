@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Main extends Thread{
     public static JFrame frame = new JFrame("MASTERRACE");
-    private static GamePanel panel = new GamePanel();
+    private static GamePanel panel;
     private static long lastCycleTime = 0;
     private static final int TICKS = 30;
     private static Vec2f mouseClick;
@@ -23,9 +23,11 @@ public class Main extends Thread{
         frame.setSize(720, 480);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel = new GamePanel();
         panel.setSize(frame.getSize());
         frame.add(panel);
         frame.setVisible(true);
+        panel.setFocusable(true);
         loadStuff();
         new Main().start();
     }

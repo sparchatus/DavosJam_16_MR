@@ -9,10 +9,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
-    private static final int UPGRADE_BAR_HEIGHT = Main.frame.getHeight() / 10;
+    private static int upgradeBarHeight;
+    private static int upgradeIconSize;
 
 
     public GamePanel(){
+        upgradeBarHeight = this.getHeight() / 10;
+        upgradeIconSize = upgradeBarHeight / 2;
         this.setBackground(Color.PINK);
         this.addKeyListener(new Keyboard());
         this.addMouseListener(new Mouse());
@@ -31,7 +34,11 @@ public class GamePanel extends JPanel {
             e.render(g);
         }
         g.setColor(Color.GRAY);
-        g.fillRect(0, 0, this.getWidth(), UPGRADE_BAR_HEIGHT);
+        g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
+        for(int i = 0; i < Main.upgrades.length; ++i){
+            Main.upgrades[i].render(g, (i + 1) * this.getWidth() / Main.upgrades.length + 2,
+                    (upgradeBarHeight - upgradeIconSize) / 2, upgradeIconSize);
+        }
 
     }
 }
