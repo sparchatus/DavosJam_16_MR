@@ -19,9 +19,9 @@ public class Level {
     public static void setTiles(String pixelFile){
         BufferedImage pixel = PictureImport.importImage(pixelFile);
         Tile earth, floor, sky;
-        earth = new Tile(PictureImport.importImage("res/Tile_Earth.png"), TileTypes.EARTH);
-        floor = new Tile(PictureImport.importImage("res/Tile_Floor.png"), TileTypes.FLOOR);
-        sky = new Tile(PictureImport.importImage("default"), TileTypes.SKY);
+        earth = new Tile(PictureImport.importImage("res/Tile_Earth.png"), TileTypes.EARTH, true);
+        floor = new Tile(PictureImport.importImage("res/Tile_Floor.png"), TileTypes.FLOOR, true);
+        sky = new Tile(PictureImport.importImage("default"), TileTypes.SKY, false);
 
         for(int i = 0; i < pixel.getHeight(); ++i){
             for(int j = 0; j < pixel.getWidth(); ++j){
@@ -39,6 +39,6 @@ public class Level {
     }
 
     public void render(){
-        
+
     }
 }
