@@ -4,6 +4,7 @@ import entities.Enemy;
 import input.Keyboard;
 import input.Mouse;
 import main.Main;
+import main.Upgrade;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,6 +39,9 @@ public class GamePanel extends JPanel {
         for(int i = 0; i < Main.upgrades.length; ++i){
             Main.upgrades[i].render(g);
         }
+        // render life
+        g.setColor(Color.BLACK);
+        g.drawString(Main.money + "$", this.getWidth() - 150, Upgrade.y + (Upgrade.size + g.getFont().getSize()) / 2);
 
     }
 }

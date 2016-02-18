@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Entity{
 
-    private int maxLife;
-    private int life;
+    public static int maxLife;
+    public static int life;
     private BufferedImage img;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
