@@ -37,7 +37,6 @@ public class GamePanel extends JPanel {
         Upgrade.y = (GamePanel.upgradeBarHeight - GamePanel.upgradeIconSize) / 2;
         for(int i = 0; i < Main.upgrades.length; ++i){
             Main.upgrades[i].x = i * Main.panel.getWidth() / Main.upgrades.length + Upgrade.size / 2;
-
         }
         for(int i = 0; i < Main.upgrades.length; ++i){
             Main.upgrades[i].render(g);

@@ -15,8 +15,10 @@ public class Player extends Entity{
     private BufferedImage img;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
-    private final int WALK_BORDERS = PLAYER_SIZE*2;
     public static int PLAYER_SIZE=256;
+    public static int WALK_BORDER_LEFT = PLAYER_SIZE;
+    public static int WALK_BORDER_RIGHT = (int) (PLAYER_SIZE*1.5);
+
     private int lastAttackChange=0;
     private boolean attacking = false;
 
@@ -24,7 +26,7 @@ public class Player extends Entity{
         super(xCoordinate,yCoordinate);
         maxLife = 1000;
         life = maxLife;
-        img= PictureImport.importImage("d.png");
+        img= PictureImport.importImage("Einhorn_1.png");
     }
 
     public void render(Graphics g){
@@ -51,14 +53,6 @@ public class Player extends Entity{
         }
     }
     private void move(int speed){
-        if(x+speed>Main.panel.getWidth()-WALK_BORDERS){
-            x+=Main.panel.getWidth()-WALK_BORDERS-x;
-            Main.level.move((Main.panel.getWidth()-WALK_BORDERS-x)-speed);
-        }else if(x+speed<Main.panel.getWidth()-WALK_BORDERS){
-            x+=WALK_BORDERS-x;
-            Main.level.move((WALK_BORDERS-x)-speed);
-        }else{
-            x+=speed;
-        }
+        x+=speed;
     }
 }

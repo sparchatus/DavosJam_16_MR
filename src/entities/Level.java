@@ -50,7 +50,7 @@ public class Level extends Entity{
     }
 
     public void move(int speed){
-        x+=speed;
+        x-=speed;
         if(x>0)x=0;
         else if(x<WIDTH*TILE_SCREEN_SIZE)x=WIDTH*TILE_SCREEN_SIZE;
     }
