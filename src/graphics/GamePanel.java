@@ -9,8 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
-    private static int upgradeBarHeight;
-    private static int upgradeIconSize;
+    public static int upgradeBarHeight;
+    public static int upgradeIconSize;
 
 
     public GamePanel(){
@@ -36,8 +36,7 @@ public class GamePanel extends JPanel {
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
         for(int i = 0; i < Main.upgrades.length; ++i){
-            Main.upgrades[i].render(g, i * this.getWidth() / Main.upgrades.length + upgradeIconSize / 2,
-                    (upgradeBarHeight - upgradeIconSize) / 2, upgradeIconSize);
+            Main.upgrades[i].render(g);
         }
 
     }

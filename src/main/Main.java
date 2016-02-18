@@ -39,6 +39,12 @@ public class Main extends Thread{
         upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
         upgrades[1] = new Upgrade("Health", null, 10);
         upgrades[2] = new Upgrade("Speed", null, 10);
+        Upgrade.size = GamePanel.upgradeIconSize;
+        Upgrade.y = (GamePanel.upgradeBarHeight - GamePanel.upgradeIconSize) / 2;
+        for(int i = 0; i < upgrades.length; ++i){
+            upgrades[i].x = i * panel.getWidth() / Main.upgrades.length + Upgrade.size / 2;
+
+        }
     }
 
     private void startDataSetup(){

@@ -9,6 +9,9 @@ public class Upgrade {
     public int cost;
     public final BufferedImage ICON;
     public static final float costMultiplier = 1.5f;
+    public int x;
+    public static int y;
+    public static int size;
 
     public Upgrade(String name, BufferedImage icon, int initialCost){
         NAME = name;
@@ -23,7 +26,7 @@ public class Upgrade {
         cost *= costMultiplier;
     }
 
-    public Graphics render(Graphics g, int x, int y, int size){
+    public Graphics render(Graphics g){
         g.setColor(Color.BLACK);
         g.fillRect(x, y, size, size);
         g.setFont(new Font("Calibri", 0, 24));
