@@ -24,8 +24,9 @@ public class Upgrade {
     }
 
     public Graphics render(Graphics g, int x, int y, int size){
+        System.out.println(size);
         g.setColor(Color.BLACK);
-        g.fillRect(x, y, x + size, y + size);
+        g.fillRect(x, y, size, size);
 
         return g;
     }

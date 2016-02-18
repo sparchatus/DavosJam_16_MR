@@ -21,7 +21,7 @@ public class Main extends Thread{
     public static Player player = new Player(0,0);
     public static ArrayList<Enemy> activeEnemies=new ArrayList<>();
     public static void main(String [ ] args){
-        frame.setSize(720, 480);
+        frame.setSize(1600, 900);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new GamePanel();
@@ -29,6 +29,7 @@ public class Main extends Thread{
         frame.add(panel);
         frame.setVisible(true);
         panel.setFocusable(true);
+        frame.setResizable(false);
         loadStuff();
         new Main().start();
     }

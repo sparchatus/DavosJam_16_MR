@@ -14,14 +14,14 @@ public class GamePanel extends JPanel {
 
 
     public GamePanel(){
-        upgradeBarHeight = this.getHeight() / 10;
-        upgradeIconSize = upgradeBarHeight / 2;
         this.setBackground(Color.PINK);
         this.addKeyListener(new Keyboard());
         this.addMouseListener(new Mouse());
     }
     @Override
     protected void paintComponent(Graphics g){
+        upgradeBarHeight = this.getHeight() / 10;
+        upgradeIconSize = upgradeBarHeight / 2;
         g.setColor(new Color(0xffe4e1));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.drawLine(0, 0, 150, 200);
@@ -36,7 +36,7 @@ public class GamePanel extends JPanel {
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
         for(int i = 0; i < Main.upgrades.length; ++i){
-            Main.upgrades[i].render(g, (i + 1) * this.getWidth() / Main.upgrades.length + 2,
+            Main.upgrades[i].render(g, (i + 1) * this.getWidth() / (Main.upgrades.length + 1),
                     (upgradeBarHeight - upgradeIconSize) / 2, upgradeIconSize);
         }
 
