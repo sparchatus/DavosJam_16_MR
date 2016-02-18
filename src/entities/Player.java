@@ -12,7 +12,6 @@ public class Player extends Entity{
     private int maxLife;
     private int life;
     private BufferedImage img;
-    private final int ;
 
     public Player(int xCoordinate, int yCoordinate){
         super(xCoordinate,yCoordinate);
@@ -31,8 +30,7 @@ public class Player extends Entity{
     }
 
     private void move(){
-        if(Keyboard.getPressedKeys(KeyCode)){
-
-        }
+        if(Keyboard.getPressedKeys(KeyCode.A.ordinal()))--x;
+        if (Keyboard.getPressedKeys(KeyCode.D.ordinal()))++x;
     }
 }

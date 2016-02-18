@@ -7,8 +7,8 @@ import java.util.HashSet;
 public class Keyboard implements KeyListener{
     private static HashSet<Integer> pressedKeys = new HashSet<Integer>();
 
-    public static HashSet<Integer> getPressedKeys(){
-        return pressedKeys;
+    public static boolean getPressedKeys(int k){
+        return pressedKeys.contains(k);
     }
 
     @Override
