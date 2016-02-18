@@ -33,7 +33,8 @@ public class Player extends Entity{
 
     @Override
     public void update() {
-        move();
+        if(Keyboard.getPressedKeys(65))move(-speed);
+        if(Keyboard.getPressedKeys(68))move(speed);
         if(Keyboard.getPressedKeys(32)){
             startAttack();
         }
@@ -48,10 +49,16 @@ public class Player extends Entity{
             attacking = true;
             lastAttackChange = Main.tick;
         }
-
     }
-    private void move(){
-        if(Keyboard.getPressedKeys(65))x-=speed;
-        if(Keyboard.getPressedKeys(68))x+=speed;
+    private void move(int speed){
+        if(x+speed>Main.panel.getWidth()-WALK_BORDERS){
+            x+=Main.panel.getWidth()-WALK_BORDERS-x;
+            Main.level.move((Main.panel.getWidth()-WALK_BORDERS-x)-speed);
+        }else if(x+speed<Main.panel.getWidth()-WALK_BORDERS){
+            x+=WALK_BORDERS-x;
+            Main.level.move((WALK_BORDERS-x)-speed);
+        }else{
+            x+=speed;
+        }
     }
 }

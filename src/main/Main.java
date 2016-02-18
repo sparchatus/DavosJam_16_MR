@@ -2,6 +2,7 @@ package main;
 
 import com.sun.javafx.geom.Vec2f;
 import entities.Enemy;
+import entities.Level;
 import entities.Player;
 import graphics.GamePanel;
 
@@ -10,12 +11,13 @@ import java.util.ArrayList;
 
 public class Main extends Thread{
     public static JFrame frame = new JFrame("MASTERRACE");
-    private static GamePanel panel;
+    public static GamePanel panel;
     private static long lastCycleTime = 0;
     public static final int TICKS = 30;
     public static int tick=0;
     private static Vec2f mouseClick;
 
+    public static Level level;
     public static int money = 0;
     public static Upgrade[] upgrades = new Upgrade[3];
     public static Player player;
@@ -31,11 +33,11 @@ public class Main extends Thread{
         panel.setFocusable(true);
         frame.setResizable(false);
         loadStuff();
-        player = new Player(0,panel.getHeight()-Player.PLAYER_SIZE);
         new Main().start();
     }
 
     private static void loadStuff(){
+        player = new Player(0,panel.getHeight()-Player.PLAYER_SIZE);
         upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
         upgrades[1] = new Upgrade("Health", null, 10);
         upgrades[2] = new Upgrade("Speed", null, 10);
@@ -45,6 +47,7 @@ public class Main extends Thread{
             upgrades[i].x = i * panel.getWidth() / Main.upgrades.length + Upgrade.size / 2;
 
         }
+        level = new Level();
     }
 
     private void startDataSetup(){
