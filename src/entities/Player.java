@@ -22,13 +22,4 @@ public class Player extends Entity{
         g.drawImage(img,x,y,null);
     }
 
-    public void update(){
-        move();
-    }
-
-    private void move(){
-        ++x;
-        ++y;
-    }
-
 }
