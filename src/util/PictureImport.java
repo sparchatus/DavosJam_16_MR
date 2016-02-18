@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class PictureImport {
 
-    private static String DEF = "res/default.png";
+    private static String DEF = "default.png";
 
     public static BufferedImage importImage(String player) {
         BufferedImage img = null;

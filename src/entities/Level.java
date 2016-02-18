@@ -2,8 +2,10 @@ package entities;
 
 import Tiles.Tile;
 import Tiles.TileTypes;
+import main.Main;
 import util.PictureImport;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -13,10 +15,12 @@ public class Level extends Entity{
     private final int WIDTH = 20;
     private final int HEIGHT = 6;
     private final int TILE_SIDE = 64;
+    private static int TILE_SCREEN_SIZE;
     public static Tile[][] levelMap = new Tile[6][20];
 
     public Level() {
         super(0, 0);
+        TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
         setTiles("Level_1.png");
     }
 
@@ -47,10 +51,10 @@ public class Level extends Entity{
         if(x<0)x=0;
         else if(x>WIDTH*TILE_SIDE)x=WIDTH*TILE_SIDE;
     }
-    public void render(){
+    public void render(Graphics g){
         for(int i = 0; i < levelMap.length; ++i) {
             for (int j = 0; j < levelMap[0].length; ++j) {
-                
+                g.drawImage(levelMap[j][i].img,,,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
             }
         }
     }
