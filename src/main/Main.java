@@ -12,7 +12,8 @@ public class Main extends Thread{
     public static JFrame frame = new JFrame("MASTERRACE");
     private static GamePanel panel;
     private static long lastCycleTime = 0;
-    private static final int TICKS = 30;
+    public static final int TICKS = 30;
+    public static int tick=0;
     private static Vec2f mouseClick;
 
     public static int money = 0;
@@ -49,6 +50,7 @@ public class Main extends Thread{
                 lastCycleTime = System.currentTimeMillis();
                 update();
                 panel.repaint();
+                ++tick;
             }
             try{
                 Thread.sleep(1000/TICKS - (System.currentTimeMillis() - lastCycleTime));
