@@ -52,7 +52,7 @@ public class Level extends Entity{
     public void move(int speed){
         x+=speed;
         if(x>0)x=0;
-        else if(x<WIDTH*TILE_SIDE)x=WIDTH*TILE_SIDE;
+        else if(x<WIDTH*TILE_SCREEN_SIZE)x=WIDTH*TILE_SCREEN_SIZE;
     }
     public void render(Graphics g){
         for(int i = 0; i < levelMap.length; ++i) {
