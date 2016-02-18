@@ -24,7 +24,7 @@ public class Player extends Entity{
         super(xCoordinate,yCoordinate);
         maxLife = 1000;
         life = maxLife;
-        img= PictureImport.importImage("player.png");
+        img= PictureImport.importImage("d.png");
     }
 
     public void render(Graphics g){

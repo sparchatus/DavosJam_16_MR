@@ -12,7 +12,7 @@ public class PictureImport {
     public static BufferedImage importImage(String player) {
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("/res" + player));
+            img = ImageIO.read(new File("res/" + player));
         } catch (IOException e) {
             //e.printStackTrace();
             if(!player.equals(DEF)) {

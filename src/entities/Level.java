@@ -26,6 +26,9 @@ public class Level extends Entity{
 
     public static void setTiles(String pixelFile){
         BufferedImage pixel = PictureImport.importImage(pixelFile);
+        if(pixel==null){
+            System.out.println("pixel map not found");
+        }
         Tile earth, floor, sky;
         earth = new Tile(PictureImport.importImage("Tile_Earth.png"), TileTypes.EARTH, true);
         floor = new Tile(PictureImport.importImage("Tile_Floor.png"), TileTypes.FLOOR, true);
@@ -48,13 +51,18 @@ public class Level extends Entity{
 
     public void move(int speed){
         x+=speed;
-        if(x<0)x=0;
-        else if(x>WIDTH*TILE_SIDE)x=WIDTH*TILE_SIDE;
+        if(x>0)x=0;
+        else if(x<WIDTH*TILE_SIDE)x=WIDTH*TILE_SIDE;
     }
     public void render(Graphics g){
         for(int i = 0; i < levelMap.length; ++i) {
             for (int j = 0; j < levelMap[0].length; ++j) {
-                g.drawImage(levelMap[j][i].img,,,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
+                int xc = j*TILE_SCREEN_SIZE+x;
+                int yc = i*TILE_SCREEN_SIZE;
+                if(xc<-TILE_SCREEN_SIZE||xc>Main.panel.getWidth()){
+                    continue;
+                }
+                g.drawImage(levelMap[i][j].img,xc,yc,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
             }
         }
     }

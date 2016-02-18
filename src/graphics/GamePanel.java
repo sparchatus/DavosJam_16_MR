@@ -26,16 +26,11 @@ public class GamePanel extends JPanel {
         g.setColor(new Color(0xffe4e1));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.drawLine(0, 0, 150, 200);
-        if(Main.player!=null) {
-            render(g);
-        }
+        render(g);
     }
 
     private void render(Graphics g){
-        Main.player.render(g);
-        for(Enemy e:Main.activeEnemies){
-            e.render(g);
-        }
+        if(Main.level!=null)Main.level.render(g);
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
         for(int i = 0; i < Main.upgrades.length; ++i){
@@ -44,6 +39,9 @@ public class GamePanel extends JPanel {
         // render life
         g.setColor(Color.BLACK);
         g.drawString(Main.money + "$", this.getWidth() - 150, Upgrade.y + (Upgrade.size + g.getFont().getSize()) / 2);
-
+        if(Main.player!=null)Main.player.render(g);
+        for(Enemy e:Main.activeEnemies){
+            e.render(g);
+        }
     }
 }
