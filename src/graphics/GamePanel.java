@@ -1,4 +1,8 @@
 package graphics;
+
+import entities.Enemy;
+import main.Main;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,6 +19,9 @@ public class GamePanel extends JPanel {
     }
 
     private void render(Graphics g){
-
+        Main.player.render(g);
+        for(Enemy e:Main.activeEnemies){
+            e.render(g);
+        }
     }
 }

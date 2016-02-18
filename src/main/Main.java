@@ -15,8 +15,8 @@ public class Main extends Thread{
     private static final int TICKS = 30;
     private static Vec2f mouseClick;
 
-    private Player player = new Player(0,0);
-    private ArrayList<Enemy> activeEnemies=new ArrayList<>();
+    public static Player player = new Player(0,0);
+    public static ArrayList<Enemy> activeEnemies=new ArrayList<>();
 
 
     public static void main(String [ ] args){
