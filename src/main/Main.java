@@ -68,9 +68,7 @@ public class Main extends Thread{
     }
 
     private synchronized void update(){
-        System.out.println("update");
         if(mouseClick != null) {
-            System.out.println("mouse clicked at " + mouseClick.x + ' ' + mouseClick.y);
             for (Upgrade u : upgrades) {
                 if (money >= u.cost && mouseClick.x >= u.x && mouseClick.x <= u.x + Upgrade.size && mouseClick.y >= Upgrade.y
                         && mouseClick.y <= Upgrade.y + Upgrade.size) {

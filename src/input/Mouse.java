@@ -10,7 +10,6 @@ import java.awt.event.MouseListener;
 public class Mouse implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("mouse clicked");
         Main.setMouseClick(new Vec2f(e.getX(), e.getY()));
     }
 

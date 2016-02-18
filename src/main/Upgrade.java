@@ -27,7 +27,6 @@ public class Upgrade {
     }
 
     public Graphics render(Graphics g){
-        //System.out.println("x " + x + ", y " + y + ", size " + size);
 
 
         g.setColor(Color.BLACK);
