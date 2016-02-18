@@ -51,6 +51,7 @@ public class Main extends Thread{
 
     private synchronized void update(){
         //bla
+        player.update();
         mouseClick = null;
     }
 
