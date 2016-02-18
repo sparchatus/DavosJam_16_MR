@@ -11,7 +11,7 @@ public class Player extends Entity{
 
     public static int maxLife;
     public static int life;
-    private int speed=5;
+    public static int speed=5;
     private BufferedImage img;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;

@@ -72,7 +72,14 @@ public class Main extends Thread{
                         && mouseClick.y <= Upgrade.y + Upgrade.size) {
                     u.buy();
                     System.out.println("upgrade bought");
-                    //todo: handle individual upgrades
+                    if(u.NAME.equals("Speed")){
+                        Player.speed += 2;
+                    } else if(u.NAME.equals("Health")){
+                        Player.maxLife *= 1.2;
+                        Player.life *= 1.2;
+                    } else{
+                        // todo: upgrade horn
+                    }
 
                 }
             }
