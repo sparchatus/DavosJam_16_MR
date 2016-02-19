@@ -28,8 +28,28 @@ public class Player extends Entity{
         super(xCoordinate,yCoordinate, PLAYER_SIZE, PLAYER_SIZE, PictureImport.importImage("Einhorn_1.png"));
         maxLife = 1000;
         life = maxLife;
-        _img=img = PictureImport.importImage("Einhorn_1.png");
-        _img1=img1 = PictureImport.importImage("Einhorn_2.png");
+        img = PictureImport.importImage("Einhorn_1.png");
+        img1 = PictureImport.importImage("Einhorn_2.png");
+        _img = PictureImport.importImage("Einhorn_1.png");
+        _img1 = PictureImport.importImage("Einhorn_2.png");
+
+        for (int i=0;i<_img.getWidth()/2;i++)
+            for (int j=0;j<_img.getHeight();j++)
+            {
+                int tmp = _img.getRGB(i, j);
+                _img.setRGB(i, j, _img.getRGB(_img.getWidth()-i-1, j));
+                _img.setRGB(_img.getWidth()-i-1, j, tmp);
+            }
+
+        for (int i=0;i<_img1.getWidth()/2;i++)
+            for (int j=0;j<_img1.getHeight();j++)
+            {
+                int tmp = _img1.getRGB(i, j);
+                _img1.setRGB(i, j, _img1.getRGB(_img1.getWidth()-i-1, j));
+                _img1.setRGB(_img1.getWidth()-i-1, j, tmp);
+            }
+
+
     }
 
     public void render(Graphics g){

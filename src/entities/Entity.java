@@ -3,7 +3,7 @@ package entities;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Entity {
+public class Entity extends Object{
 
     protected int x, y, sizeX, sizeY;
     protected BufferedImage bi;
