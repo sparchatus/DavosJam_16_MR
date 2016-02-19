@@ -14,6 +14,7 @@ public class Player extends Entity{
     public static int speed=5;
     private static boolean moving = false;
     private BufferedImage img, img1, _img, _img1;
+    long lastImgChange = 0;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
     public static int PLAYER_SIZE=256;
@@ -32,8 +33,24 @@ public class Player extends Entity{
     }
 
     public void render(Graphics g){
+        if(!moving){
+            super.render(g);
+            return;
+        }
         if(speed>0){
-
+            if(System.currentTimeMillis() - 100 > lastImgChange){
+                if(bi != img1){
+                    bi = img1;
+                } else bi = img;
+                lastImgChange = System.currentTimeMillis();
+            }
+        } else if(speed < 0){
+            if(System.currentTimeMillis() - 100 > lastImgChange){
+                if(bi != _img){
+                    bi = _img;
+                } else bi = _img1;
+                lastImgChange = System.currentTimeMillis();
+            }
         }
         super.render(g);
     }

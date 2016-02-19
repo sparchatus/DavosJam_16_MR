@@ -25,7 +25,6 @@ public class GamePanel extends JPanel {
         upgradeIconSize = upgradeBarHeight / 2;
         g.setColor(new Color(0xffe4e1));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        g.drawLine(0, 0, 150, 200);
         render(g);
     }
 
@@ -35,11 +34,8 @@ public class GamePanel extends JPanel {
         g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
         Upgrade.size = GamePanel.upgradeIconSize;
         Upgrade.y = (GamePanel.upgradeBarHeight - GamePanel.upgradeIconSize) / 2;
-        if((Integer)this.getWidth() != null) {
-            for (int i = 0; i < Main.upgrades.length; ++i) {
-                Main.upgrades[i].x = i * this.getWidth() / Main.upgrades.length + Upgrade.size / 2;
-
-            }
+        for (int i = 0; i < Main.upgrades.length; ++i) {
+            Main.upgrades[i].x = i * this.getWidth() / Main.upgrades.length + Upgrade.size / 2;
         }
         for(int i = 0; i < Main.upgrades.length; ++i){
             if(Main.upgrades[i] != null)

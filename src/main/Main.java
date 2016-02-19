@@ -73,10 +73,10 @@ public class Main extends Thread{
                     u.buy();
                     System.out.println("upgrade bought");
                     if(u.NAME.equals("Speed")){
-                        Player.speed += 2;
+                        Player.speed += Player.speed / Math.abs(Player.speed) * 2;
                     } else if(u.NAME.equals("Health")){
-                        Player.maxLife *= 1.2;
-                        Player.life *= 1.2;
+                        Player.maxLife *= 1.2f;
+                        Player.life *= 1.2f;
                     } else{
                         // todo: upgrade horn
                     }
