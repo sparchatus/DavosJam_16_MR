@@ -31,7 +31,7 @@ public class Player extends Entity{
     private final int START_Y=Main.panel.getHeight()-Player.PLAYER_SIZE-Level.TILE_SCREEN_SIZE;
 
     private int lastAttackChange=0;
-    private static boolean attacking = false;
+    public static boolean attacking = false;
 
     public Player(int xCoordinate, int yCoordinate){
         super(xCoordinate,yCoordinate, PLAYER_SIZE, PLAYER_SIZE, PictureImport.importImage("Einhorn_1.png"));
@@ -58,8 +58,8 @@ public class Player extends Entity{
                 _img1.setRGB(_img1.getWidth()-i-1, j, tmp);
             }
 
-        attackingImg = PictureImport.importImage("attacking.png");
-        _attackingImg = attackingImg;
+        attackingImg = PictureImport.importImage("Einhorn_Attack.png");
+        _attackingImg = PictureImport.importImage("Einhorn_Attack.png");
         for (int i=0;i<_attackingImg.getWidth()/2;i++)
             for (int j=0;j<_attackingImg.getHeight();j++)
             {
@@ -94,6 +94,7 @@ public class Player extends Entity{
                     }
                 }
             }
+
         } else {
             if(lastAttackChange + ATTACK_DURATION < Main.tick){
                 attacking = false;

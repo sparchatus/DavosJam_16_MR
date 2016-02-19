@@ -54,6 +54,7 @@ public class GamePanel extends JPanel {
         g.drawString(Main.money + "$", this.getWidth() - 150, Upgrade.y + (Upgrade.size + g.getFont().getSize()) / 2);
         if(Main.player!=null)Main.player.render(g);
         Main.prince.render(g);
+        Main.horn.render(g);
         for(Enemy e:Main.activeEnemies){
             e.render(g);
         }

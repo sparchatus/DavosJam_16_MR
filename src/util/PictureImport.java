@@ -23,4 +23,15 @@ public class PictureImport {
         }
         return img;
     }
+    public static BufferedImage flip(BufferedImage img){
+        BufferedImage _img = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        for (int i=0;i<img.getWidth();i++)
+            for (int j=0;j<img.getHeight();j++)
+            {
+                int tmp = img.getRGB(i, j);
+                _img.setRGB(i, j, img.getRGB(img.getWidth()-i-1, j));
+                _img.setRGB(img.getWidth()-i-1, j, tmp);
+            }
+        return _img;
+    }
 }

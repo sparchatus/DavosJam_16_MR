@@ -13,6 +13,7 @@ public class Main extends Thread{
     public static JFrame frame = new JFrame("MASTERRACE");
     public static GamePanel panel;
     private static long lastCycleTime = 0;
+    public static Horn horn = new Horn();
     public static final int TICKS = 30;
     public static int tick=0;
     private static Vec2f mouseClick;
@@ -84,7 +85,19 @@ public class Main extends Thread{
                         Player.maxLife *= 1.2f;
                         Player.life *= 1.2f;
                     } else{
-                        // todo: upgrade horn
+                        if(Horn.h == 1){
+                            Horn.horn = Horn.horn2;
+                            Horn.attackHorn = Horn._horn2;
+                        } else if(Horn.h == 2){
+                            Horn.horn = Horn.horn3;
+                            Horn.attackHorn = Horn._horn3;
+                        } else if(Horn.h == 3){
+                            Horn.horn = Horn.horn4;
+                            Horn.attackHorn = Horn._horn4;
+                        } else if(Horn.h == 4){
+                            Horn.horn = Horn.horn1;
+                            Horn.attackHorn = Horn._horn1;
+                        }
                     }
 
                 }
@@ -108,6 +121,7 @@ public class Main extends Thread{
         }
         player.update();
         prince.update();
+        horn.update();
         mouseClick = null;
         if(rainbows.size() > 100) rainbows.remove(0);
     }
