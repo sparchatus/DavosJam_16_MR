@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class Entity extends Object{
 
-    protected int rCL=0;
+    protected static int rCL=0;
     protected int x, y, sizeX, sizeY;
     protected BufferedImage bi;
 

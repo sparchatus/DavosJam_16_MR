@@ -58,9 +58,9 @@ public class Player extends Entity{
 
     public void render(Graphics g){
         g.setColor(Color.GRAY);
-        g.fillRect(x, y + 280, LIFE_BAR_WIDTH, LIFE_BAR_HEIGHT);
+        g.fillRect(x-rCL, y + 280, LIFE_BAR_WIDTH, LIFE_BAR_HEIGHT);
         g.setColor(Color.RED);
-        g.fillRect(x, y + 280, LIFE_BAR_WIDTH * life / maxLife, LIFE_BAR_HEIGHT);
+        g.fillRect(x-rCL, y + 280, LIFE_BAR_WIDTH * life / maxLife, LIFE_BAR_HEIGHT);
         if(!moving){
             super.render(g);
             return;
@@ -119,17 +119,17 @@ public class Player extends Entity{
         if(x<WALK_BORDER_LEFT){
             moving = false;
             x = WALK_BORDER_LEFT;
-            rCL+=speed;
-            if(rCL>0){
-                rCL=0;
-            }
         }else if(x>Level.length-WALK_BORDER_RIGHT){
             moving = false;
             x=Level.length-WALK_BORDER_RIGHT;
-            rCL-=speed;
-            if(rCL<-(Level.length-Main.panel.getWidth())){
-                rCL=0;
-            }
+        }
+        if(x-rCL<WALK_BORDER_LEFT){
+            rCL-=WALK_BORDER_LEFT-(x-rCL);
+            if(rCL<0)rCL=0;
+        }
+        else if(x-rCL>(Main.panel.getWidth()-WALK_BORDER_RIGHT)){
+            rCL+=(x-rCL)-(Main.panel.getWidth()-WALK_BORDER_RIGHT);
+            if(rCL>Level.length-Main.panel.getWidth())rCL=Level.length-Main.panel.getWidth();
         }
     }
 }

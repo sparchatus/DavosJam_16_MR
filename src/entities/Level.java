@@ -52,17 +52,12 @@ public class Level extends Entity{
 
     }
 
-    public void move(int speed){
-        x+=speed;
-        if(x>0)x=0;
-        else if(x<-(WIDTH*TILE_SCREEN_SIZE-Main.panel.getWidth()))x=-(WIDTH*TILE_SCREEN_SIZE-Main.panel.getWidth());
-    }
     public void render(Graphics g){
         for(int i = 0; i < levelMap.length; ++i) {
             for (int j = 0; j < levelMap[0].length; ++j) {
                 int xc = j*TILE_SCREEN_SIZE+x;
                 int yc = i*TILE_SCREEN_SIZE;
-                g.drawImage(levelMap[i][j].img,xc,yc,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
+                g.drawImage(levelMap[i][j].img,xc-rCL,yc,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
             }
         }
     }
