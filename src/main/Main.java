@@ -21,7 +21,7 @@ public class Main extends Thread{
     public static boolean won=false;
 
     public static Level level;
-    public static int money = 1000000;
+    public static int money = 0;
     public static Upgrade[] upgrades = new Upgrade[3];
     public static Player player;
     public static Prince prince;
@@ -45,9 +45,9 @@ public class Main extends Thread{
     private static void loadStuff(){
         won=false;
         tick = 0;
-        upgrades[0] = new Upgrade("Horn", PictureImport.importImage("Upgrade_Horn.png"), 10); //todo: update this stuff
-        upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 10);
-        upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 10);
+        upgrades[0] = new Upgrade("Horn", PictureImport.importImage("Upgrade_Horn.png"), 1000);
+        upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 350);
+        upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 200);
         level = new Level1();
         prince = new Prince();
     }
@@ -99,18 +99,26 @@ public class Main extends Thread{
                         Player.life *= 1.2f;
                     } else{
                         if(Horn.h == 1){
+                            Horn.h = 2;
                             Horn.horn = Horn.horn2;
                             Horn.attackHorn = Horn._horn2;
                         } else if(Horn.h == 2){
+                            Horn.h = 3;
                             Horn.horn = Horn.horn3;
                             Horn.attackHorn = Horn._horn3;
                         } else if(Horn.h == 3){
+                            Horn.h = 4;
                             Horn.horn = Horn.horn4;
                             Horn.attackHorn = Horn._horn4;
                         } else if(Horn.h == 4){
+                            Horn.h = 1;
                             Horn.horn = Horn.horn1;
                             Horn.attackHorn = Horn._horn1;
                         }
+
+                        Horn._horn = PictureImport.flip(Horn.horn);
+                        Horn._attackHorn = PictureImport.flip(Horn.attackHorn);
+
                     }
 
                 }

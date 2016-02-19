@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public class Enemy extends Entity{
     private long lastShotTime = 0;
-    private int shootCooldown = 2000;
+    private int shootCooldown = 500;
     private static final int RANGE = 500;
     public static int SIZE = (int)(Player.PLAYER_SIZE*0.75);
     public final int spawnPlace;

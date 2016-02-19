@@ -21,13 +21,13 @@ public class HostileParticle extends Entity{
         }
         if(Main.rng(0.6f)){
             bi=img1;
-            DMG=800;
+            DMG=1200;
         }else if(Main.rng(0.75f)){
             bi=img2;
-            DMG=2000;
+            DMG=3000;
         }else{
             bi=img3;
-            DMG=4000;
+            DMG=6000;
         }
         speed = direction*SPEED;
     }

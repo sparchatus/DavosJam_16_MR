@@ -19,9 +19,9 @@ public class Horn  extends Entity{
 
     public static int h = 1;
     public static BufferedImage horn = horn1;
-    private static BufferedImage _horn = PictureImport.flip(horn);
-    public static BufferedImage attackHorn = horn1;
-    private static BufferedImage _attackHorn = PictureImport.flip(_horn3);
+    public static BufferedImage _horn = PictureImport.flip(horn);
+    public static BufferedImage attackHorn = _horn1;
+    public static BufferedImage _attackHorn = PictureImport.flip(attackHorn);
 
     public Horn(){
         super(0, 0, 32, 32, horn);
