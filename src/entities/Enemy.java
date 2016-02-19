@@ -13,16 +13,26 @@ public class Enemy extends Entity{
     public final int spawnPlace;
     public boolean dead = false;
     private static BufferedImage DEAD_BITMAP = PictureImport.importImage("dead_enemy.png");
+    private long lastImgChange = 0;
+    private final static BufferedImage img1 = PictureImport.importImage("Enemy_1.png");
+    private final static BufferedImage img2 = PictureImport.importImage("Enemy_2.png");
 
 
     public Enemy(int xCoordinate, int yCoordinate, int spawn) {
-        super(xCoordinate, yCoordinate, SIZE,SIZE, PictureImport.importImage("Enemy_1.png"));
+        super(xCoordinate, yCoordinate, SIZE,SIZE, img1);
         spawnPlace = spawn;
     }
 
     public void update(){
+        if(lastImgChange + 200 < System.currentTimeMillis()){
+            lastImgChange = System.currentTimeMillis();
+            if(bi != img1){
+                bi = img1;
+            } else bi = img2;
+        }
         if(!dead && lastShotTime + shootCooldown <= System.currentTimeMillis() &&
                 Math.pow(Main.player.x - x, 2) + Math.pow(Main.player.y - y, 2) <= RANGE * RANGE){
+
             if(Main.rng(0.3f)){
                 shoot();
             }
