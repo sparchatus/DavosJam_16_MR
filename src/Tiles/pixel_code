@@ -8,4 +8,5 @@ door bottom right: 0xb6ff00
 door top left: 0xff6a00
 door top right: 0xff0000
 castle jail: 0x7f006e
-castle window: 0xff006e
+castle window:
+carpet: 0xffd800

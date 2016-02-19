@@ -15,13 +15,11 @@ import java.util.ArrayList;
 public class Level extends Entity{
 
     protected static ArrayList<Enemy>enemiesToSpawn=new ArrayList<>();
-    private final int WIDTH = 20;
     private final int END;
     private final int HEIGHT = 6;
     public static int length;
-    private final int TILE_SIDE = 64;
     public static int TILE_SCREEN_SIZE;
-    private static Tile earth, floor, sky, castleB, castleT, doorBL, castleW, castleJ, doorBR, doorTL, doorTR;
+    private static Tile earth, floor, sky, castleB, castleT, doorBL, castleW, castleJ, castleF, doorBR, doorTL, doorTR;
     public static Tile[][] levelMap = new Tile[6][20];
     public static int level;
 
@@ -41,7 +39,7 @@ public class Level extends Entity{
         doorTR = new Tile(PictureImport.importImage("Door_Top_Right.png"), false);
         castleW = new Tile(PictureImport.importImage("Castle_Window.png"), false);
         castleJ = new Tile(PictureImport.importImage("Castle_Jail.png"), false);
-
+        castleF = new Tile(PictureImport.importImage("Castle_Floor.png"), false);
         setTiles(map);
     }
 
@@ -72,6 +70,8 @@ public class Level extends Entity{
                 }else if(t==0xff7f006e){
                     levelMap[i][j]=castleJ;
                 }else if(t==0xffff006e){
+                    levelMap[i][j]=castleW;
+                }else if(t==0xffffd800){
                     levelMap[i][j]=castleW;
                 }else{
                     levelMap[i][j]=sky;

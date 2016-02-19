@@ -17,6 +17,7 @@ public class Start {
         BufferedImage bf[]= new BufferedImage[1];
         for(BufferedImage i:bf){
             curImg=i;
+            Main.panel.repaint();
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

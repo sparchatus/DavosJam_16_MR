@@ -16,9 +16,10 @@ public class Main extends Thread{
     public static Horn horn = new Horn();
     public static final int TICKS = 30;
     public static int tick=0;
-    private static Vec2f mouseClick;
+    public static Vec2f mouseClick;
     public static boolean running=false;
     public static boolean won=false;
+    public static boolean restart = false;
 
     public static Level level;
     public static int money = 0;
@@ -43,43 +44,51 @@ public class Main extends Thread{
     }
 
     private static void loadStuff(){
-        won=false;
-        tick = 0;
         upgrades[0] = new Upgrade("Horn", PictureImport.importImage("Upgrade_Horn.png"), 1000);
         upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 350);
         upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 200);
-        level = new Level1();
         prince = new Prince();
     }
 
     private void startDataSetup(){
-
+        won=false;
+        restart=false;
+        running = false;
+        tick = 0;
+        level = new Level1();
     }
 
     public void run(){
-        startDataSetup();
-        Start.animateStart();
-        while (running){
-            if(System.currentTimeMillis() > lastCycleTime + 1000/TICKS){
-                lastCycleTime = System.currentTimeMillis();
-                if(running) {
+        do {
+            System.out.println("start of game loop");
+            startDataSetup();
+            Start.animateStart();
+            System.out.println("entering while");
+            while (running) {
+                if (System.currentTimeMillis() > lastCycleTime + 1000 / TICKS) {
+                    lastCycleTime = System.currentTimeMillis();
                     update();
                     panel.repaint();
+                    ++tick;
                 }
-                ++tick;
+                try {
+                    Thread.sleep(1000 / TICKS - (System.currentTimeMillis() - lastCycleTime));
+                } catch (Exception e) {
+                    //ignore
+                }
             }
-            try{
-                Thread.sleep(1000/TICKS - (System.currentTimeMillis() - lastCycleTime));
-            }catch(Exception e){
-                //ignore
+            System.out.println("exit while");
+            if (won) {
+                System.out.println("animating win");
+                Won.animateWin();
+            } else {
+                System.out.println("animating loss");
+                Lost.animateLoss();
             }
-        }
-        if(won){
-            Won.animateWin();
-        }else{
-            Lost.animateLoss();
-        }
-        Restart.askRestart();
+            System.out.println("asking restart");
+            Restart.askRestart();
+            System.out.println("out of restart with:" + restart);
+        }while(restart);
     }
 
     private synchronized void update(){
