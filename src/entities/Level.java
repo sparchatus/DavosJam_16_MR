@@ -19,6 +19,7 @@ public class Level extends Entity{
     public static int TILE_SCREEN_SIZE;
     public static Tile[][] levelMap = new Tile[6][20];
 
+
     public Level() {
         super(0,0,0,0,null);
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
@@ -72,6 +73,10 @@ public class Level extends Entity{
     }
 
     public static boolean getSolid(int x, int y){
-        return levelMap[y/TILE_SCREEN_SIZE][x/TILE_SCREEN_SIZE].solid;
+        x/=TILE_SCREEN_SIZE;
+        y/=TILE_SCREEN_SIZE;
+        if(x<0||x>levelMap[0].length)return false;
+        if(y<0||y>levelMap.length)return false;
+        return levelMap[y][x].solid;
     }
 }
