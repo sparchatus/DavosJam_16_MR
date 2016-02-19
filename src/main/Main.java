@@ -38,6 +38,7 @@ public class Main extends Thread{
 
     private static void loadStuff(){
         player = new Player(Player.WALK_BORDER_LEFT,panel.getHeight()-Player.PLAYER_SIZE);
+        activeEnemies.add(new Enemy(0,0));
         upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
         upgrades[1] = new Upgrade("Health", null, 10);
         upgrades[2] = new Upgrade("Speed", null, 10);
