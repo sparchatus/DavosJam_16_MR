@@ -1,6 +1,5 @@
 package entities;
 
-import com.sun.javafx.geom.Vec2f;
 import main.Main;
 import util.PictureImport;
 
@@ -24,7 +23,7 @@ public class Enemy extends Entity{
         }
     }
     private void shoot(){
-        Main.hostileParticles.add(new HostileParticle(x, y, new Vec2f((float)Math.sin(PARTICLE_SPEED), (float)Math.cos(PARTICLE_SPEED))));
+        Main.hostileParticles.add(new HostileParticle(x, y, (byte)(-1)));
         lastShotTime = System.currentTimeMillis();
         System.out.println("Enemy shot a particle");
     }

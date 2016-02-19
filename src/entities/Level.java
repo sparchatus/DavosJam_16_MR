@@ -34,7 +34,7 @@ public class Level extends Entity{
         }
         Tile earth, floor, sky;
         earth = new Tile(PictureImport.importImage("Tile_Earth.png"), TileTypes.EARTH, true);
-        floor = new Tile(PictureImport.importImage("Tile_Floor.png"), TileTypes.FLOOR, true);
+        floor = new Tile(PictureImport.importImage("Tile_Floor.png"), TileTypes.FLOOR, false);
         sky = new Tile(PictureImport.importImage("Tile_Sky.png"), TileTypes.SKY, false);
 
         for(int i = 0; i < pixel.getHeight(); ++i){
@@ -60,5 +60,9 @@ public class Level extends Entity{
                 g.drawImage(levelMap[i][j].img,xc-rCL,yc,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
             }
         }
+    }
+
+    public static boolean getSolid(int x, int y){
+        return levelMap[y/TILE_SCREEN_SIZE][x/TILE_SCREEN_SIZE].solid;
     }
 }

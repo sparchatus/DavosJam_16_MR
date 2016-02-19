@@ -119,9 +119,6 @@ public class Player extends Entity{
         if(x<WALK_BORDER_LEFT){
             moving = false;
             x = WALK_BORDER_LEFT;
-        }else if(x>Level.length-WALK_BORDER_RIGHT){
-            moving = false;
-            x=Level.length-WALK_BORDER_RIGHT;
         }
         if(x-rCL<WALK_BORDER_LEFT){
             rCL-=WALK_BORDER_LEFT-(x-rCL);
