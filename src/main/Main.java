@@ -111,6 +111,10 @@ public class Main extends Thread{
         if(Math.random() < chance)return true;
         return false;
     }
+
+    public static void lost() {
+        //todo: display lost screen and restart
+    }
 }
 
 

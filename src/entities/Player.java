@@ -56,8 +56,6 @@ public class Player extends Entity{
                 _img1.setRGB(i, j, _img1.getRGB(_img1.getWidth()-i-1, j));
                 _img1.setRGB(_img1.getWidth()-i-1, j, tmp);
             }
-
-
     }
 
     public void render(Graphics g){
@@ -109,6 +107,12 @@ public class Player extends Entity{
             if(speed > 0)Main.rainbows.add(new Rainbow(x,(int)( y + 140 + 20 * (Math.random() - 0.5))));
             else if(speed < 0)Main.rainbows.add(new Rainbow(x + 220, (int)( y + 140 + 20 * (Math.random() - 0.5))));
         }
+        ++life;
+        if(life > maxLife){
+            life = maxLife;
+        }else{
+            Main.lost();
+        }
     }
 
     private void startAttack(){
@@ -119,7 +123,6 @@ public class Player extends Entity{
     }
 
     private void move(int i){
-        System.out.println("player x:" + x);
         moving=true;
         if(i==1){
             speed=Math.abs(speed);
