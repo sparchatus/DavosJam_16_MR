@@ -2,7 +2,6 @@ package graphics;
 
 import entities.Enemy;
 import entities.HostileParticle;
-import entities.Rainbow;
 import input.Keyboard;
 import input.Mouse;
 import main.Main;
@@ -41,10 +40,8 @@ public class GamePanel extends JPanel {
             if(Main.upgrades[i] != null)
             Main.upgrades[i].render(g);
         }
-        synchronized (this) {
-            for (Rainbow r : Main.rainbows) {
-                r.render(g);
-            }
+        for (int i = 0; i < Main.rainbows.size(); ++i) {
+            Main.rainbows.get(i).render(g);
         }
         for(HostileParticle h : Main.hostileParticles){
             h.render(g);
@@ -60,8 +57,6 @@ public class GamePanel extends JPanel {
             for (int i = 0; i < Main.upgrades.length; ++i) {
                 Main.upgrades[i].x = i * getWidth() / Main.upgrades.length + Upgrade.size / 2;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        }catch (Exception e){}
     }
 }

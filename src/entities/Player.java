@@ -25,7 +25,7 @@ public class Player extends Entity{
     private static int lastRainbowTime = 0;
     private static final int RAINBOW_COOLDOWN = 100;
     public static float ySpeed = 0;
-    public static float gravity = 2;
+    public static float gravity = 1.5f;
 
     private int lastAttackChange=0;
     private boolean attacking = false;
@@ -87,9 +87,9 @@ public class Player extends Entity{
 
     @Override
     public void update() {
-        if(Level.getSolid(x, y + sizeY + 1)){
+        if(!Level.getSolid(x, y + sizeY + 1)){
             ySpeed += gravity;
-        }
+        } else ySpeed = ySpeed < 0 ? ySpeed : 0;
         y += ySpeed;
         if(Keyboard.getPressedKeys(65))move(-1);
         else if(Keyboard.getPressedKeys(68))move(1);
@@ -140,7 +140,7 @@ public class Player extends Entity{
     private void jump(){
         if(Level.getSolid(x, y + sizeY + 1)){
             System.out.println("jump!");
-            ySpeed = -10;
+            ySpeed = -20;
         }
     }
 }
