@@ -3,7 +3,7 @@ package main;
 import com.sun.javafx.geom.Vec2f;
 import entities.*;
 import entities.levels.Level1;
-import graphics.GamePanel;
+import graphics.*;
 import util.PictureImport;
 
 import javax.swing.*;
@@ -17,6 +17,8 @@ public class Main extends Thread{
     public static final int TICKS = 30;
     public static int tick=0;
     private static Vec2f mouseClick;
+    public static boolean running=false;
+    public static boolean won=false;
 
     public static Level level;
     public static int money = 1000000;
@@ -41,6 +43,8 @@ public class Main extends Thread{
     }
 
     private static void loadStuff(){
+        won=false;
+        tick = 0;
         upgrades[0] = new Upgrade("Horn", PictureImport.importImage("Upgrade_Horn.png"), 10); //todo: update this stuff
         upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 10);
         upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 10);
@@ -54,11 +58,14 @@ public class Main extends Thread{
 
     public void run(){
         startDataSetup();
-        while (true){
+        Start.animateStart();
+        while (running){
             if(System.currentTimeMillis() > lastCycleTime + 1000/TICKS){
                 lastCycleTime = System.currentTimeMillis();
-                update();
-                panel.repaint();
+                if(running) {
+                    update();
+                    panel.repaint();
+                }
                 ++tick;
             }
             try{
@@ -67,6 +74,12 @@ public class Main extends Thread{
                 //ignore
             }
         }
+        if(won){
+            Won.animateWin();
+        }else{
+            Lost.animateLoss();
+        }
+        Restart.askRestart();
     }
 
     private synchronized void update(){
@@ -136,10 +149,13 @@ public class Main extends Thread{
     }
 
     public static void lost() {
-        //todo: display lost screen and restart
-        while (true) {
-            System.out.println("LOST");
-        }
+        running = false;
+        won=false;
+    }
+
+    public static void won() {
+        running = false;
+        won=true;
     }
 }
 
