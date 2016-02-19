@@ -13,7 +13,7 @@ public class Player extends Entity{
     public static int life;
     public static int speed=5;
     private static boolean moving = false;
-    private BufferedImage img, img1, _img, _img1;
+    private BufferedImage img, img1, _img, _img1, _attackingImg, attackingImg;
     long lastImgChange = 0;
     private final int ATTACK_DURATION = Main.TICKS*2;
     private final int ATTACK_COOLDOWN = Main.TICKS*6;
@@ -57,6 +57,15 @@ public class Player extends Entity{
                 _img1.setRGB(_img1.getWidth()-i-1, j, tmp);
             }
 
+        attackingImg = _img;
+        _attackingImg = attackingImg;
+        for (int i=0;i<_attackingImg.getWidth()/2;i++)
+            for (int j=0;j<_attackingImg.getHeight();j++)
+            {
+                int tmp = _attackingImg.getRGB(i, j);
+                _attackingImg.setRGB(i, j, _attackingImg.getRGB(_attackingImg.getWidth()-i-1, j));
+                _attackingImg.setRGB(_attackingImg.getWidth()-i-1, j, tmp);
+            }
 
     }
 
@@ -115,6 +124,8 @@ public class Player extends Entity{
         if(!attacking&&(lastAttackChange+ATTACK_COOLDOWN)<=Main.tick){
             attacking = true;
             lastAttackChange = Main.tick;
+            if(speed < 0) bi = _attackingImg;
+            else bi = attackingImg;
         }
     }
 

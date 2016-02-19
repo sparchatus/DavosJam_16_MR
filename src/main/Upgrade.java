@@ -18,6 +18,7 @@ public class Upgrade {
         ICON = icon;
         level = 1;
         cost = initialCost;
+
     }
 
     public void buy(){
@@ -27,10 +28,8 @@ public class Upgrade {
     }
 
     public Graphics render(Graphics g){
-
-
         g.setColor(Color.BLACK);
-        g.fillRect(x, y, size, size);
+        g.drawImage(ICON, x, y, size, size, null);
         g.setFont(new Font("Calibri", 0, 24));
         g.drawString(NAME + '(' + cost + "$)", (int)(x + 1.5f * size), y + (size + g.getFont().getSize()) / 2);
 
