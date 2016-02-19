@@ -170,11 +170,10 @@ public class Player extends Entity{
             rCL+=(x-rCL)-(Main.panel.getWidth()-WALK_BORDER_RIGHT);
             if(rCL>Level.length-Main.panel.getWidth())rCL=Level.length-Main.panel.getWidth();
         }
-
     }
 
     private void moveY(){
-        if(!Level.getSolid(x, y + sizeY + 1)||!Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)||!Level.getSolid(x+PLAYER_SIZE, y + sizeY + 1)){
+        if(!Level.getSolid(x, y + sizeY + 1)&&!Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)&&!Level.getSolid(x+PLAYER_SIZE, y + sizeY + 1)){
             ySpeed += gravity;
         } else ySpeed = ySpeed < 0 ? ySpeed : 0;
         y += ySpeed;
