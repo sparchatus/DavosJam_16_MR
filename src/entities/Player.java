@@ -22,6 +22,8 @@ public class Player extends Entity{
     public static int WALK_BORDER_RIGHT = PLAYER_SIZE*3;
     private static final int LIFE_BAR_WIDTH = 200;
     private static final int LIFE_BAR_HEIGHT = 30;
+    private static int lastRainbowTime = 0;
+    private static final int RAINBOW_COOLDOWN = 100;
 
     private int lastAttackChange=0;
     private boolean attacking = false;
@@ -93,6 +95,10 @@ public class Player extends Entity{
             attacking = false;
             lastAttackChange = Main.tick;
         }
+        if(System.currentTimeMillis() > lastRainbowTime + RAINBOW_COOLDOWN){
+            if(speed > 0)Main.rainbows.add(new Rainbow(x,(int)( y + 140 + 10 * (Math.random() - 0.5))));
+            else if(speed < 0)Main.rainbows.add(new Rainbow(x + 220, (int)( y + 140 + 10 * (Math.random() - 0.5))));
+        }
     }
 
     private void startAttack(){
@@ -101,6 +107,7 @@ public class Player extends Entity{
             lastAttackChange = Main.tick;
         }
     }
+
     private void move(int i){
         moving=true;
         if(i==1){

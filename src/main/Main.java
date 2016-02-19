@@ -1,10 +1,7 @@
 package main;
 
 import com.sun.javafx.geom.Vec2f;
-import entities.Enemy;
-import entities.HostileParticle;
-import entities.Level;
-import entities.Player;
+import entities.*;
 import graphics.GamePanel;
 
 import javax.swing.*;
@@ -24,6 +21,7 @@ public class Main extends Thread{
     public static Player player;
     public static ArrayList<Enemy> activeEnemies=new ArrayList<>();
     public static ArrayList<HostileParticle> hostileParticles = new ArrayList<>();
+    public static ArrayList<Rainbow> rainbows = new ArrayList<>();
     public static void main(String [ ] args){
         frame.setSize(1600, 900);
         frame.setLocationRelativeTo(null);
