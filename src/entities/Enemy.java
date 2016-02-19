@@ -6,13 +6,12 @@ import util.PictureImport;
 public class Enemy extends Entity{
     private long lastShotTime = 0;
     private int shootCooldown = 2000;
-    private static final int PARTICLE_SPEED = 20;
     private static final int RANGE = 500;
     public final int spawnPlace;
 
 
     public Enemy(int xCoordinate, int yCoordinate, int spawn) {
-        super(xCoordinate, yCoordinate, Player.PLAYER_SIZE,Player.PLAYER_SIZE, PictureImport.importImage("Enemy_1.png"));
+        super(xCoordinate, yCoordinate, (int)(Player.PLAYER_SIZE*0.75),(int)(Player.PLAYER_SIZE*0.75), PictureImport.importImage("Enemy_1.png"));
         spawnPlace = spawn;
     }
 

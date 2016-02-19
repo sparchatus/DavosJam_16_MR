@@ -26,6 +26,8 @@ public class Player extends Entity{
     private static final int RAINBOW_COOLDOWN = 100;
     public static float ySpeed = 0;
     public static float gravity = 1.5f;
+    private final int START_X=WALK_BORDER_LEFT;
+    private final int START_Y=Main.panel.getHeight()-Player.PLAYER_SIZE-Level.TILE_SCREEN_SIZE;
 
     private int lastAttackChange=0;
     private boolean attacking = false;
@@ -143,5 +145,10 @@ public class Player extends Entity{
             System.out.println("jump!");
             ySpeed = -20;
         }
+    }
+
+    public void setBack() {
+        x=START_X;
+        y=START_Y;
     }
 }

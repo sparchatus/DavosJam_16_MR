@@ -68,7 +68,9 @@ public class Level extends Entity{
     @Override
     public void update() {
         if(Main.player.x>END){
+            System.out.println("level changed");
             Main.level = new Level2();
+            Main.player.setBack();
         }
         if(enemiesToSpawn.isEmpty())return;
         while(Main.player.x>enemiesToSpawn.get(0).spawnPlace){
