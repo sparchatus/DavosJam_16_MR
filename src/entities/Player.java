@@ -127,10 +127,10 @@ public class Player extends Entity{
         if(attacking){
             for(Enemy e : Main.activeEnemies){
                 if(speed > 0) {
-                    if (e.x > x + sizeX && e.x - x - sizeX < ATTACK_RANGE) {
+                    if (e.x > x + sizeX - 100 && e.x - x - sizeX < ATTACK_RANGE) {
                         if (Math.abs((y + sizeY) / 2 - (e.y + e.sizeY) / 2) < 100) e.die();
                     }
-                } else if (e.x < x && x - e.x < ATTACK_RANGE) {
+                } else if (e.x < x + 100 && x - e.x - e.sizeX < ATTACK_RANGE) {
                     if (Math.abs((y + sizeY) / 2 - (e.y + e.sizeY) / 2) < 100) e.die();
                 }
             }
