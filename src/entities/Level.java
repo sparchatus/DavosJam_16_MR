@@ -19,6 +19,7 @@ public class Level extends Entity{
     public static int length;
     private final int TILE_SIDE = 64;
     public static int TILE_SCREEN_SIZE;
+    private static Tile earth, floor, sky;
     public static Tile[][] levelMap = new Tile[6][20];
 
 
@@ -27,18 +28,15 @@ public class Level extends Entity{
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
         setTiles(map);
         END = end;
+        earth = new Tile(PictureImport.importImage("Tile_Earth.png"), TileTypes.EARTH, true);
+        floor = new Tile(PictureImport.importImage("Tile_Floor.png"), TileTypes.FLOOR, false);
+        sky = new Tile(PictureImport.importImage("Tile_Sky.png"), TileTypes.SKY, false);
     }
 
     public static void setTiles(String pixelFile){
         BufferedImage pixel = PictureImport.importImage(pixelFile);
         length = pixel.getWidth()*TILE_SCREEN_SIZE;
-        if(pixel==null){
-            System.out.println("pixel map not found");
-        }
-        Tile earth, floor, sky;
-        earth = new Tile(PictureImport.importImage("Tile_Earth.png"), TileTypes.EARTH, true);
-        floor = new Tile(PictureImport.importImage("Tile_Floor.png"), TileTypes.FLOOR, false);
-        sky = new Tile(PictureImport.importImage("Tile_Sky.png"), TileTypes.SKY, false);
+        levelMap=new Tile[pixel.getHeight()][pixel.getWidth()];
 
         for(int i = 0; i < pixel.getHeight(); ++i){
             for(int j = 0; j < pixel.getWidth(); ++j){
