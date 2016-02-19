@@ -135,9 +135,7 @@ public class Player extends Entity{
                 }
             }
         }
-
-
-
+        System.out.println(x);
     }
 
     public void startAttack(){
@@ -158,6 +156,11 @@ public class Player extends Entity{
             speed=-Math.abs(speed);
         }
         x+=speed;
+        if(Level.getSolid(x+20, y+20)||Level.getSolid(x+20, y + PLAYER_SIZE/2+20)){
+            x=((x+20)/Level.TILE_SCREEN_SIZE+1)*Level.TILE_SCREEN_SIZE-20;
+        }else if(Level.getSolid(x+PLAYER_SIZE-20, y+20)||Level.getSolid(x+PLAYER_SIZE-20, y + PLAYER_SIZE/2+20)){
+            x=((x+PLAYER_SIZE-20)/Level.TILE_SCREEN_SIZE)*Level.TILE_SCREEN_SIZE+20-PLAYER_SIZE;
+        }
         if(x<WALK_BORDER_LEFT){
             moving = false;
             x = WALK_BORDER_LEFT;
@@ -170,16 +173,25 @@ public class Player extends Entity{
             rCL+=(x-rCL)-(Main.panel.getWidth()-WALK_BORDER_RIGHT);
             if(rCL>Level.length-Main.panel.getWidth())rCL=Level.length-Main.panel.getWidth();
         }
+
     }
 
     private void moveY(){
-        if(!Level.getSolid(x, y + sizeY + 1)&&!Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)&&!Level.getSolid(x+PLAYER_SIZE, y + sizeY + 1)){
+        if(!Level.getSolid(x+20, y + sizeY + 1)&&!Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)&&!Level.getSolid(x+PLAYER_SIZE-50, y + sizeY + 1)){
             ySpeed += gravity;
-        } else ySpeed = ySpeed < 0 ? ySpeed : 0;
+        } else {
+            ySpeed = ySpeed < 0 ? ySpeed : 0;
+        }
         y += ySpeed;
+        if(y>Main.panel.getHeight()){
+            Main.lost();
+        }
+        if(Level.getSolid(x+20, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE-50, y + sizeY + 1)) {
+            y =((y + sizeY + 1)/Level.TILE_SCREEN_SIZE)*Level.TILE_SCREEN_SIZE-PLAYER_SIZE;
+        }
     }
     private void jump(){
-        if(Level.getSolid(x, y + sizeY + 1)){
+        if(Level.getSolid(x+50, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE-50, y + sizeY + 1)){
             System.out.println("jump!");
             ySpeed = -40;
         }

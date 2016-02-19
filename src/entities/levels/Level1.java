@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Level1 extends Level {
 
     public Level1(){
-        super(3000, "Level_1.png");
+        super(2800, "Level_1.png");
         level = 1;
         Main.player = new Player(Player.WALK_BORDER_LEFT,Main.panel.getHeight()-Player.PLAYER_SIZE-TILE_SCREEN_SIZE);
         enemiesInGame();

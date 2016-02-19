@@ -31,7 +31,7 @@ public class Level extends Entity{
         earth = new Tile(PictureImport.importImage("Tile_Earth.png"), true);
         floor = new Tile(PictureImport.importImage("Tile_Floor.png"), false);
         sky = new Tile(PictureImport.importImage("Tile_Sky.png"), false);
-        castleB = new Tile(PictureImport.importImage("Castle_bottom.png"), false);
+        castleB = new Tile(PictureImport.importImage("Castle_bottom_1.png"), false);
         castleT = new Tile(PictureImport.importImage("Castle_Texture.png"), false);
         doorBL = new Tile(PictureImport.importImage("Door_Bottom_Left.png"), false);
         doorBR = new Tile(PictureImport.importImage("Door_Bottom_Right.png"), false);
@@ -93,6 +93,7 @@ public class Level extends Entity{
                 case 2:Main.level = new Level3();
             }
             Main.player.setBack();
+            rCL=0;
         }
         if(enemiesToSpawn.isEmpty())return;
         while(Main.player.x>enemiesToSpawn.get(0).spawnPlace){
