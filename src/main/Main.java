@@ -2,6 +2,7 @@ package main;
 
 import com.sun.javafx.geom.Vec2f;
 import entities.Enemy;
+import entities.HostileParticle;
 import entities.Level;
 import entities.Player;
 import graphics.GamePanel;
@@ -22,6 +23,7 @@ public class Main extends Thread{
     public static Upgrade[] upgrades = new Upgrade[3];
     public static Player player;
     public static ArrayList<Enemy> activeEnemies=new ArrayList<>();
+    public static ArrayList<HostileParticle> hostileParticles = new ArrayList<>();
     public static void main(String [ ] args){
         frame.setSize(1600, 900);
         frame.setLocationRelativeTo(null);
@@ -38,7 +40,7 @@ public class Main extends Thread{
 
     private static void loadStuff(){
         player = new Player(Player.WALK_BORDER_LEFT,panel.getHeight()-Player.PLAYER_SIZE);
-        activeEnemies.add(new Enemy(0,0));
+        activeEnemies.add(new Enemy(0,700));
         upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
         upgrades[1] = new Upgrade("Health", null, 10);
         upgrades[2] = new Upgrade("Speed", null, 10);
@@ -85,12 +87,21 @@ public class Main extends Thread{
                 }
             }
         }
+        for(Enemy e : activeEnemies){
+            e.update();
+        }
+        for(HostileParticle h : hostileParticles) h.update();
         player.update();
         mouseClick = null;
     }
 
     public static void setMouseClick(Vec2f vec){
         mouseClick = vec;
+    }
+
+    public static boolean rng(float chance){
+        if(Math.random() < chance)return true;
+        return false;
     }
 }
 

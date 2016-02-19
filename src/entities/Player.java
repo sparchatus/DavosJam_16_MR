@@ -20,6 +20,8 @@ public class Player extends Entity{
     public static int PLAYER_SIZE=256;
     public static int WALK_BORDER_LEFT = PLAYER_SIZE/2;
     public static int WALK_BORDER_RIGHT = PLAYER_SIZE*3;
+    private static final int LIFE_BAR_WIDTH = 200;
+    private static final int LIFE_BAR_HEIGHT = 30;
 
     private int lastAttackChange=0;
     private boolean attacking = false;
@@ -53,6 +55,10 @@ public class Player extends Entity{
     }
 
     public void render(Graphics g){
+        g.setColor(Color.GRAY);
+        g.fillRect(x, y + 280, LIFE_BAR_WIDTH, LIFE_BAR_HEIGHT);
+        g.setColor(Color.RED);
+        g.fillRect(x, y + 280, LIFE_BAR_WIDTH * life / maxLife, LIFE_BAR_HEIGHT);
         if(!moving){
             super.render(g);
             return;

@@ -8,7 +8,12 @@ public class HostileParticle extends Entity{
     private static int SIZE = 50;
 
     public HostileParticle(int x, int y, Vec2f speed){
-        super(x, y, SIZE, SIZE,PictureImport.importImage("default.png"));
+        super(x, y, SIZE, SIZE,PictureImport.importImage("Einhorn_1.png"));
         this.speed = speed;
+    }
+
+    public void update(){
+        x += speed.x;
+        y += speed.y;
     }
 }

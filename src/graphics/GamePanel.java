@@ -1,6 +1,7 @@
 package graphics;
 
 import entities.Enemy;
+import entities.HostileParticle;
 import input.Keyboard;
 import input.Mouse;
 import main.Main;
@@ -34,14 +35,13 @@ public class GamePanel extends JPanel {
         g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
         Upgrade.size = GamePanel.upgradeIconSize;
         Upgrade.y = (GamePanel.upgradeBarHeight - GamePanel.upgradeIconSize) / 2;
-        if((Integer)this.getWidth() != null) {
-            for (int i = 0; i < Main.upgrades.length; ++i) {
-                Main.upgrades[i].x = i * getWidth() / Main.upgrades.length + Upgrade.size / 2;
-            }
-        }
+
         for(int i = 0; i < Main.upgrades.length; ++i){
             if(Main.upgrades[i] != null)
             Main.upgrades[i].render(g);
+        }
+        for(HostileParticle h : Main.hostileParticles){
+            h.render(g);
         }
         // render life
         g.setColor(Color.BLACK);
@@ -49,6 +49,13 @@ public class GamePanel extends JPanel {
         if(Main.player!=null)Main.player.render(g);
         for(Enemy e:Main.activeEnemies){
             e.render(g);
+        }
+        try {
+            for (int i = 0; i < Main.upgrades.length; ++i) {
+                Main.upgrades[i].x = i * getWidth() / Main.upgrades.length + Upgrade.size / 2;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
