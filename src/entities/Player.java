@@ -78,6 +78,7 @@ public class Player extends Entity{
             super.render(g);
             return;
         }
+        if(!attacking)
         if(speed>0){
             if(System.currentTimeMillis() - 100 > lastImgChange){
                 if(bi != img1){
