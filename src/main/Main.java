@@ -4,6 +4,7 @@ import com.sun.javafx.geom.Vec2f;
 import entities.*;
 import entities.levels.Level1;
 import graphics.GamePanel;
+import util.PictureImport;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -38,9 +39,9 @@ public class Main extends Thread{
     }
 
     private static void loadStuff(){
-        upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
-        upgrades[1] = new Upgrade("Health", null, 10);
-        upgrades[2] = new Upgrade("Speed", null, 10);
+        upgrades[0] = new Upgrade("Horn", PictureImport.importImage("Upgrade_Horn.png"), 10); //todo: update this stuff
+        upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 10);
+        upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 10);
         level = new Level1();
     }
 
