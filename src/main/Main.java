@@ -99,6 +99,7 @@ public class Main extends Thread{
         }
         player.update();
         mouseClick = null;
+        if(rainbows.size() > 100) rainbows.remove(0);
     }
 
     public static void setMouseClick(Vec2f vec){

@@ -41,8 +41,10 @@ public class GamePanel extends JPanel {
             if(Main.upgrades[i] != null)
             Main.upgrades[i].render(g);
         }
-        for(Rainbow r : Main.rainbows){
-            r.render(g);
+        synchronized (this) {
+            for (Rainbow r : Main.rainbows) {
+                r.render(g);
+            }
         }
         for(HostileParticle h : Main.hostileParticles){
             h.render(g);

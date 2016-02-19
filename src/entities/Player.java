@@ -24,6 +24,8 @@ public class Player extends Entity{
     private static final int LIFE_BAR_HEIGHT = 30;
     private static int lastRainbowTime = 0;
     private static final int RAINBOW_COOLDOWN = 100;
+    public static float ySpeed = 0;
+    public static float gravity = 2;
 
     private int lastAttackChange=0;
     private boolean attacking = false;
@@ -85,19 +87,25 @@ public class Player extends Entity{
 
     @Override
     public void update() {
+        if(Level.getSolid(x, y + sizeY + 1)){
+            ySpeed += gravity;
+        }
+        y += ySpeed;
         if(Keyboard.getPressedKeys(65))move(-1);
         else if(Keyboard.getPressedKeys(68))move(1);
         else moving = false;
         if(Keyboard.getPressedKeys(32)){
-            startAttack();
+            //startAttack();
+            //todo: attack with mouselistener
+            jump();
         }
         if(attacking&&(lastAttackChange+ATTACK_DURATION<=Main.tick)){
             attacking = false;
             lastAttackChange = Main.tick;
         }
         if(System.currentTimeMillis() > lastRainbowTime + RAINBOW_COOLDOWN){
-            if(speed > 0)Main.rainbows.add(new Rainbow(x,(int)( y + 140 + 10 * (Math.random() - 0.5))));
-            else if(speed < 0)Main.rainbows.add(new Rainbow(x + 220, (int)( y + 140 + 10 * (Math.random() - 0.5))));
+            if(speed > 0)Main.rainbows.add(new Rainbow(x,(int)( y + 140 + 20 * (Math.random() - 0.5))));
+            else if(speed < 0)Main.rainbows.add(new Rainbow(x + 220, (int)( y + 140 + 20 * (Math.random() - 0.5))));
         }
     }
 
@@ -127,6 +135,12 @@ public class Player extends Entity{
         else if(x-rCL>(Main.panel.getWidth()-WALK_BORDER_RIGHT)){
             rCL+=(x-rCL)-(Main.panel.getWidth()-WALK_BORDER_RIGHT);
             if(rCL>Level.length-Main.panel.getWidth())rCL=Level.length-Main.panel.getWidth();
+        }
+    }
+    private void jump(){
+        if(Level.getSolid(x, y + sizeY + 1)){
+            System.out.println("jump!");
+            ySpeed = -10;
         }
     }
 }
