@@ -26,11 +26,11 @@ public class Level extends Entity{
     public Level(int end, String map) {
         super(0,0,0,0,null);
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
-        setTiles(map);
         END = end;
         earth = new Tile(PictureImport.importImage("Tile_Earth.png"), TileTypes.EARTH, true);
         floor = new Tile(PictureImport.importImage("Tile_Floor.png"), TileTypes.FLOOR, false);
         sky = new Tile(PictureImport.importImage("Tile_Sky.png"), TileTypes.SKY, false);
+        setTiles(map);
     }
 
     public static void setTiles(String pixelFile){
