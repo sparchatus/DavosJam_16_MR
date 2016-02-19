@@ -13,6 +13,7 @@ public class Level extends Entity{
 
     protected static ArrayList<Enemy>enemiesToSpawn=new ArrayList<>();
     private final int WIDTH = 20;
+    private final int END;
     private final int HEIGHT = 6;
     public static int length;
     private final int TILE_SIDE = 64;
@@ -20,10 +21,11 @@ public class Level extends Entity{
     public static Tile[][] levelMap = new Tile[6][20];
 
 
-    public Level() {
+    public Level(int end, String map) {
         super(0,0,0,0,null);
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
-        setTiles("Level_1.png");
+        setTiles(map);
+        END = end;
     }
 
     public static void setTiles(String pixelFile){
@@ -75,8 +77,8 @@ public class Level extends Entity{
     public static boolean getSolid(int x, int y){
         x/=TILE_SCREEN_SIZE;
         y/=TILE_SCREEN_SIZE;
-        if(x<0||x>levelMap[0].length)return false;
-        if(y<0||y>levelMap.length)return false;
+        if(x<0||x>=levelMap[0].length)return false;
+        if(y<0||y>=levelMap.length)return false;
         return levelMap[y][x].solid;
     }
 }
