@@ -87,6 +87,9 @@ public class Main extends Thread{
 
                 }
             }
+            if(mouseClick.y > 90){
+                player.startAttack();
+            }
         }
         level.update();
         for(Enemy e : activeEnemies){
