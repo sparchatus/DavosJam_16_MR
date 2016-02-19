@@ -14,6 +14,7 @@ public class Level extends Entity{
     private static ArrayList<Enemy>enemiesToSpawn=new ArrayList<>();
     private final int WIDTH = 20;
     private final int HEIGHT = 6;
+    public static int length;
     private final int TILE_SIDE = 64;
     public static int TILE_SCREEN_SIZE;
     public static Tile[][] levelMap = new Tile[6][20];
@@ -27,6 +28,7 @@ public class Level extends Entity{
 
     public static void setTiles(String pixelFile){
         BufferedImage pixel = PictureImport.importImage(pixelFile);
+        length = pixel.getWidth()*TILE_SCREEN_SIZE;
         if(pixel==null){
             System.out.println("pixel map not found");
         }

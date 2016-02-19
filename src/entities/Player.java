@@ -102,22 +102,27 @@ public class Player extends Entity{
         }
     }
     private void move(int i){
+        moving=true;
         if(i==1){
             speed=Math.abs(speed);
         }else{
             speed=-Math.abs(speed);
         }
-        moving=true;
         x+=speed;
-        int want = x;
         if(x<WALK_BORDER_LEFT){
-            x=WALK_BORDER_LEFT;
-            Main.level.move(x-want);
-            moving=false;
-        }else if(x>Main.panel.getWidth()-WALK_BORDER_RIGHT){
-            x = Main.panel.getWidth()-WALK_BORDER_RIGHT;
-            Main.level.move(x-want);
             moving = false;
+            x = WALK_BORDER_LEFT;
+            rCL+=speed;
+            if(rCL>0){
+                rCL=0;
+            }
+        }else if(x>Level.length-WALK_BORDER_RIGHT){
+            moving = false;
+            x=Level.length-WALK_BORDER_RIGHT;
+            rCL-=speed;
+            if(rCL<-(Level.length-Main.panel.getWidth())){
+                rCL=0;
+            }
         }
     }
 }

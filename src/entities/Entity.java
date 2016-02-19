@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class Entity extends Object{
 
+    protected int rCL=0;
     protected int x, y, sizeX, sizeY;
     protected BufferedImage bi;
 
@@ -18,7 +19,7 @@ public class Entity extends Object{
 
     public void render(Graphics g){
         if(bi==null)return;
-        g.drawImage(bi, x, y, sizeX, sizeY, null);
+        g.drawImage(bi, x-rCL, y, sizeX, sizeY, null);
     }
 
     public void update(){
