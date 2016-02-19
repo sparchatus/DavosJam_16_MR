@@ -123,7 +123,7 @@ public class Player extends Entity{
         if(life > maxLife){
             life = maxLife;
         }else if(life<=0){
-            Main.lost();
+            life = 0;
         }
     }
 

@@ -15,8 +15,8 @@ public class HostileParticle extends Entity{
     public HostileParticle(int x, int y, byte direction){
         super(x, y, SIZE, SIZE,PictureImport.importImage("Einhorn_1.png"));
         if(img1==null){
-            img1=PictureImport.importImage("Einhorn_1.png");
-            img2=PictureImport.importImage("Einhorn_1.png");
+            img1=PictureImport.importImage("Particle_Stone.png");
+            img2=PictureImport.importImage("Particle_Knife.png");
         }
         if(Main.rng(0.8f)){
             bi=img1;

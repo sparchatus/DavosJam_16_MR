@@ -67,6 +67,9 @@ public class Main extends Thread{
     }
 
     private synchronized void update(){
+        if(player.life==0){
+            Main.lost();
+        }
         if(mouseClick != null) {
             for (Upgrade u : upgrades) {
                 if (money >= u.cost && mouseClick.x >= u.x && mouseClick.x <= u.x + Upgrade.size && mouseClick.y >= Upgrade.y
@@ -115,7 +118,7 @@ public class Main extends Thread{
     public static void lost() {
         //todo: display lost screen and restart
         while (true) {
-            System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOST");
+            System.out.println("LOST");
         }
     }
 }

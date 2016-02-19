@@ -6,19 +6,23 @@ import input.Keyboard;
 import input.Mouse;
 import main.Main;
 import main.Upgrade;
+import util.PictureImport;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel {
     public static int upgradeBarHeight;
     public static int upgradeIconSize;
+    private static BufferedImage top_ui;
 
 
     public GamePanel(){
         this.setBackground(Color.PINK);
         this.addKeyListener(new Keyboard());
         this.addMouseListener(new Mouse());
+        top_ui= PictureImport.importImage("UI_top.png");
     }
     @Override
     protected void paintComponent(Graphics g){
@@ -31,8 +35,7 @@ public class GamePanel extends JPanel {
 
     private void render(Graphics g){
         if(Main.level!=null)Main.level.render(g);
-        g.setColor(Color.GRAY);
-        g.fillRect(0, 0, this.getWidth(), upgradeBarHeight);
+        g.drawImage(top_ui,0,0,1600,90,null);
         Upgrade.size = GamePanel.upgradeIconSize;
         Upgrade.y = (GamePanel.upgradeBarHeight - GamePanel.upgradeIconSize) / 2;
 
