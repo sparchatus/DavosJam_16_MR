@@ -2,6 +2,7 @@ package entities;
 
 import Tiles.Tile;
 import entities.levels.Level2;
+import entities.levels.Level3;
 import main.Main;
 import util.PictureImport;
 
@@ -86,7 +87,11 @@ public class Level extends Entity{
     public void update() {
         if(Main.player.x>END){
             System.out.println("level changed");
-            Main.level = new Level2();
+            switch(level){
+                case 1:Main.level = new Level2();
+                    break;
+                case 2:Main.level = new Level3();
+            }
             Main.player.setBack();
         }
         if(enemiesToSpawn.isEmpty())return;

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Level3 extends Level {
 
     public Level3() {
-        super(3000, "Level_2.png");
+        super(300000, "Level_3.png");
         enemiesInGame();
     }
 
