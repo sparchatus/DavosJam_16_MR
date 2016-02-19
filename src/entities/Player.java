@@ -25,7 +25,7 @@ public class Player extends Entity{
     private static int lastRainbowTime = 0;
     private static final int RAINBOW_COOLDOWN = 100;
     public static float ySpeed = 0;
-    public static float gravity = 1.5f;
+    public static float gravity = 1.7f;
     private final int START_X=WALK_BORDER_LEFT;
     private final int START_Y=Main.panel.getHeight()-Player.PLAYER_SIZE-Level.TILE_SCREEN_SIZE;
 
@@ -119,7 +119,7 @@ public class Player extends Entity{
             if(speed > 0)Main.rainbows.add(new Rainbow(x,(int)( y + 140 + 20 * (Math.random() - 0.5))));
             else if(speed < 0)Main.rainbows.add(new Rainbow(x + 220, (int)( y + 140 + 20 * (Math.random() - 0.5))));
         }
-        ++life;
+        life+=50;
         if(life > maxLife){
             life = maxLife;
         }else if(life<=0){
@@ -160,7 +160,7 @@ public class Player extends Entity{
     private void jump(){
         if(Level.getSolid(x, y + sizeY + 1)){
             System.out.println("jump!");
-            ySpeed = -20;
+            ySpeed = -40;
         }
     }
 

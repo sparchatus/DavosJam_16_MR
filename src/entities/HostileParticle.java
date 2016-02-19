@@ -35,7 +35,7 @@ public class HostileParticle extends Entity{
     public boolean checkHit() {
         if(x<0||x>Level.length||y<0||y> Main.panel.getHeight())return true;
         if(Level.getSolid(x,y)) return true;
-        if(x>Main.player.x&&x<Main.player.x+Player.PLAYER_SIZE&&y>Main.player.y&&y<Main.player.y+Player.PLAYER_SIZE)return playerHit();
+        if(x>Main.player.x+20&&x<Main.player.x+Player.PLAYER_SIZE-20&&y>Main.player.y&&y<Main.player.y+Player.PLAYER_SIZE)return playerHit();
         return false;
     }
 
