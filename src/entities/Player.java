@@ -22,6 +22,7 @@ public class Player extends Entity{
     public static int WALK_BORDER_RIGHT = PLAYER_SIZE*3;
     private static final int LIFE_BAR_WIDTH = 200;
     private static final int LIFE_BAR_HEIGHT = 30;
+    private static final int ATTACK_RANGE = 50;
     private static int lastRainbowTime = 0;
     private static final int RAINBOW_COOLDOWN = 100;
     public static float ySpeed = 0;
@@ -113,8 +114,6 @@ public class Player extends Entity{
         else if(Keyboard.getPressedKeys(68))move(1);
         else moving = false;
         if(Keyboard.getPressedKeys(32)){
-            //startAttack();
-            //todo: attack with mouselistener
             jump();
         }
         if(System.currentTimeMillis() > lastRainbowTime + RAINBOW_COOLDOWN){
@@ -127,6 +126,21 @@ public class Player extends Entity{
         }else if(life<=0){
             life = 0;
         }
+
+        if(attacking){
+            for(Enemy e : Main.activeEnemies){
+                if(speed > 0) {
+                    if (e.x > x + sizeX && e.x - x - sizeX < ATTACK_RANGE) {
+                        if (Math.abs((y + sizeY) / 2 - (e.y + e.sizeY) / 2) < 100) e.die();
+                    }
+                } else if (e.x < x && x - e.x < ATTACK_RANGE) {
+                    if (Math.abs((y + sizeY) / 2 - (e.y + e.sizeY) / 2) < 100) e.die();
+                }
+            }
+        }
+
+
+
     }
 
     public void startAttack(){
