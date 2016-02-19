@@ -30,7 +30,8 @@ public class GamePanel extends JPanel {
         upgradeIconSize = upgradeBarHeight / 2;
         g.setColor(new Color(0xffe4e1));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        render(g);
+        if(Main.running)render(g);
+        else renderSpecial(g);
     }
 
     private void render(Graphics g){
@@ -66,6 +67,9 @@ public class GamePanel extends JPanel {
     }
 
     private void renderSpecial(Graphics g){
-
+        Start.render(g);
+        Lost.render(g);
+        Won.render(g);
+        Restart.render(g);
     }
 }

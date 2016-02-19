@@ -3,6 +3,8 @@ package entities;
 import Tiles.Tile;
 import entities.levels.Level2;
 import entities.levels.Level3;
+import entities.levels.Level4;
+import entities.levels.Level5;
 import main.Main;
 import util.PictureImport;
 
@@ -19,7 +21,7 @@ public class Level extends Entity{
     public static int length;
     private final int TILE_SIDE = 64;
     public static int TILE_SCREEN_SIZE;
-    private static Tile earth, floor, sky, castleB, castleT, doorBL, doorBR, doorTL, doorTR;
+    private static Tile earth, floor, sky, castleB, castleT, doorBL, castleW, castleJ, doorBR, doorTL, doorTR;
     public static Tile[][] levelMap = new Tile[6][20];
     public static int level;
 
@@ -37,6 +39,8 @@ public class Level extends Entity{
         doorBR = new Tile(PictureImport.importImage("Door_Bottom_Right.png"), false);
         doorTL = new Tile(PictureImport.importImage("Door_Top_Left.png"), false);
         doorTR = new Tile(PictureImport.importImage("Door_Top_Right.png"), false);
+        castleW = new Tile(PictureImport.importImage("Castle_Window.png"), false);
+        castleJ = new Tile(PictureImport.importImage("Castle_Jail.png"), false);
 
         setTiles(map);
     }
@@ -65,6 +69,10 @@ public class Level extends Entity{
                     levelMap[i][j]=doorTL;
                 }else if(t==0xffff0000){
                     levelMap[i][j]=doorTR;
+                }else if(t==0xff7f006e){
+                    levelMap[i][j]=castleJ;
+                }else if(t==0xffff006e){
+                    levelMap[i][j]=castleW;
                 }else{
                     levelMap[i][j]=sky;
                 }
@@ -91,6 +99,12 @@ public class Level extends Entity{
                 case 1:Main.level = new Level2();
                     break;
                 case 2:Main.level = new Level3();
+                    break;
+                case 3:Main.level = new Level4();
+                    break;
+                case 4:Main.level = new Level5();
+                    break;
+                case 5:Main.won();
             }
             Main.player.setBack();
             rCL=0;
