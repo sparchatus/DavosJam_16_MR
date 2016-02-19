@@ -3,14 +3,28 @@ package entities;
 import main.Main;
 import util.PictureImport;
 
+import java.awt.image.BufferedImage;
+
 public class HostileParticle extends Entity{
     private static int SIZE = 50;
-    private final int DMG = 100;
+    private final int DMG;
     private final int SPEED = 10;
     private int speed;
+    private static BufferedImage img1, img2;
 
     public HostileParticle(int x, int y, byte direction){
         super(x, y, SIZE, SIZE,PictureImport.importImage("Einhorn_1.png"));
+        if(img1==null){
+            img1=PictureImport.importImage("Einhorn_1.png");
+            img2=PictureImport.importImage("Einhorn_1.png");
+        }
+        if(Main.rng(0.5f)){
+            bi=img1;
+            DMG=200;
+        }else{
+            bi=img2;
+            DMG=100;
+        }
         speed = direction*SPEED;
     }
 
