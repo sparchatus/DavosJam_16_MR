@@ -23,7 +23,7 @@ public class Enemy extends Entity{
     public void update(){
         if(!dead && lastShotTime + shootCooldown <= System.currentTimeMillis() &&
                 Math.pow(Main.player.x - x, 2) + Math.pow(Main.player.y - y, 2) <= RANGE * RANGE){
-            if(Main.rng(0.2f)){
+            if(Main.rng(0.3f)){
                 shoot();
             }
         }

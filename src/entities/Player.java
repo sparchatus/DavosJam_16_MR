@@ -106,10 +106,6 @@ public class Player extends Entity{
 
     @Override
     public void update() {
-        if(!Level.getSolid(x, y + sizeY + 1)){
-            ySpeed += gravity;
-        } else ySpeed = ySpeed < 0 ? ySpeed : 0;
-        y += ySpeed;
         if(Keyboard.getPressedKeys(65))move(-1);
         else if(Keyboard.getPressedKeys(68))move(1);
         else moving = false;
@@ -172,6 +168,16 @@ public class Player extends Entity{
         else if(x-rCL>(Main.panel.getWidth()-WALK_BORDER_RIGHT)){
             rCL+=(x-rCL)-(Main.panel.getWidth()-WALK_BORDER_RIGHT);
             if(rCL>Level.length-Main.panel.getWidth())rCL=Level.length-Main.panel.getWidth();
+        }
+        if(!Level.getSolid(x, y + sizeY + 1)||!Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)||!Level.getSolid(x+PLAYER_SIZE, y + sizeY + 1)){
+            ySpeed += gravity;
+        } else ySpeed = ySpeed < 0 ? ySpeed : 0;
+        y += ySpeed;
+
+        if(speed>0&&(!Level.getSolid(x+PLAYER_SIZE, y)||!Level.getSolid(x+PLAYER_SIZE, y+PLAYER_SIZE/2)||!Level.getSolid(x+PLAYER_SIZE, y + PLAYER_SIZE-1))){
+            x=(x/Level.TILE_SCREEN_SIZE - 1)*Level.TILE_SCREEN_SIZE;
+        }else if(speed<0&&(!Level.getSolid(x, y)||!Level.getSolid(x, y+PLAYER_SIZE/2)||!Level.getSolid(x, y + PLAYER_SIZE-1))){
+            x=(x/Level.TILE_SCREEN_SIZE + 1)*Level.TILE_SCREEN_SIZE;
         }
     }
     private void jump(){
