@@ -34,7 +34,7 @@ public class Player extends Entity{
 
     public Player(int xCoordinate, int yCoordinate){
         super(xCoordinate,yCoordinate, PLAYER_SIZE, PLAYER_SIZE, PictureImport.importImage("Einhorn_1.png"));
-        maxLife = 1000;
+        maxLife = 10000;
         life = maxLife;
         img = PictureImport.importImage("Einhorn_1.png");
         img1 = PictureImport.importImage("Einhorn_2.png");
@@ -122,7 +122,7 @@ public class Player extends Entity{
         ++life;
         if(life > maxLife){
             life = maxLife;
-        }else{
+        }else if(life<=0){
             Main.lost();
         }
     }

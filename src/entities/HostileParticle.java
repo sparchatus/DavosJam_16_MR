@@ -18,12 +18,12 @@ public class HostileParticle extends Entity{
             img1=PictureImport.importImage("Einhorn_1.png");
             img2=PictureImport.importImage("Einhorn_1.png");
         }
-        if(Main.rng(0.5f)){
+        if(Main.rng(0.8f)){
             bi=img1;
-            DMG=200;
+            DMG=1000;
         }else{
             bi=img2;
-            DMG=100;
+            DMG=3000;
         }
         speed = direction*SPEED;
     }

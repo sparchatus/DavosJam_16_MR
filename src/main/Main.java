@@ -114,6 +114,9 @@ public class Main extends Thread{
 
     public static void lost() {
         //todo: display lost screen and restart
+        while (true) {
+            System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOST");
+        }
     }
 }
 
