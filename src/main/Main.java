@@ -21,6 +21,7 @@ public class Main extends Thread{
     public static int money = 1000000;
     public static Upgrade[] upgrades = new Upgrade[3];
     public static Player player;
+    public static Prince prince;
     public static ArrayList<Enemy> activeEnemies=new ArrayList<>();
     public static ArrayList<HostileParticle> hostileParticles = new ArrayList<>();
     public static ArrayList<Rainbow> rainbows = new ArrayList<>();
@@ -43,6 +44,7 @@ public class Main extends Thread{
         upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 10);
         upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 10);
         level = new Level1();
+        prince = new Prince();
     }
 
     private void startDataSetup(){
@@ -105,6 +107,7 @@ public class Main extends Thread{
             System.out.println("Particle removed!");
         }
         player.update();
+        prince.update();
         mouseClick = null;
         if(rainbows.size() > 100) rainbows.remove(0);
     }
