@@ -25,7 +25,6 @@ public class GamePanel extends JPanel {
         upgradeIconSize = upgradeBarHeight / 2;
         g.setColor(new Color(0xffe4e1));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        g.drawLine(0, 0, 150, 200);
         render(g);
     }
 
