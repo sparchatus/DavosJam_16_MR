@@ -159,9 +159,10 @@ public class Player extends Entity{
             ySpeed += gravity;
         } else ySpeed = ySpeed < 0 ? ySpeed : 0;
         y += ySpeed;
-        if(speed>0&&(!Level.getSolid(x+PLAYER_SIZE, y)||!Level.getSolid(x+PLAYER_SIZE, y+PLAYER_SIZE/2)||!Level.getSolid(x+PLAYER_SIZE, y + PLAYER_SIZE))){
+
+        if(speed>0&&(!Level.getSolid(x+PLAYER_SIZE, y)||!Level.getSolid(x+PLAYER_SIZE, y+PLAYER_SIZE/2)||!Level.getSolid(x+PLAYER_SIZE, y + PLAYER_SIZE-1))){
             x=(x/Level.TILE_SCREEN_SIZE - 1)*Level.TILE_SCREEN_SIZE;
-        }else if(speed<0&&(!Level.getSolid(x, y)||!Level.getSolid(x, y+PLAYER_SIZE/2)||!Level.getSolid(x, y + PLAYER_SIZE))){
+        }else if(speed<0&&(!Level.getSolid(x, y)||!Level.getSolid(x, y+PLAYER_SIZE/2)||!Level.getSolid(x, y + PLAYER_SIZE-1))){
             x=(x/Level.TILE_SCREEN_SIZE + 1)*Level.TILE_SCREEN_SIZE;
         }
     }

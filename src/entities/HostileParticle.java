@@ -10,20 +10,24 @@ public class HostileParticle extends Entity{
     private final int DMG;
     private final int SPEED = 10;
     private int speed;
-    private static BufferedImage img1, img2;
+    private static BufferedImage img1, img2, img3;
 
     public HostileParticle(int x, int y, byte direction){
         super(x, y, SIZE, SIZE,PictureImport.importImage("Einhorn_1.png"));
         if(img1==null){
             img1=PictureImport.importImage("Particle_Stone.png");
             img2=PictureImport.importImage("Particle_Knife.png");
+            img3=PictureImport.importImage("Particle_Ball.png");
         }
-        if(Main.rng(0.8f)){
+        if(Main.rng(0.6f)){
             bi=img1;
-            DMG=1000;
-        }else{
+            DMG=800;
+        }else if(Main.rng(0.75f)){
             bi=img2;
-            DMG=3000;
+            DMG=2000;
+        }else{
+            bi=img3;
+            DMG=4000;
         }
         speed = direction*SPEED;
     }

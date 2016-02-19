@@ -7,8 +7,9 @@ import main.Main;
 
 import java.util.ArrayList;
 
-public class Level2 extends Level {
-    public Level2() {
+public class Level3 extends Level {
+
+    public Level3() {
         super(3000, "Level_2.png");
         enemiesInGame();
     }
