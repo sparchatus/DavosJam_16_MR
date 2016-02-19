@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Level extends Entity{
 
-    private static ArrayList<Enemy>enemiesToSpawn=new ArrayList<>();
+    protected static ArrayList<Enemy>enemiesToSpawn=new ArrayList<>();
     private final int WIDTH = 20;
     private final int HEIGHT = 6;
     public static int length;
@@ -22,7 +22,6 @@ public class Level extends Entity{
     public Level() {
         super(0,0,0,0,null);
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
-        Main.player.y-=TILE_SCREEN_SIZE;
         setTiles("Level_1.png");
     }
 
@@ -59,6 +58,16 @@ public class Level extends Entity{
                 int yc = i*TILE_SCREEN_SIZE;
                 g.drawImage(levelMap[i][j].img,xc-rCL,yc,TILE_SCREEN_SIZE, TILE_SCREEN_SIZE, null);
             }
+        }
+    }
+
+    @Override
+    public void update() {
+        if(enemiesToSpawn.isEmpty())return;
+        while(Main.player.x>enemiesToSpawn.get(0).spawnPlace){
+            Main.activeEnemies.add(enemiesToSpawn.get(0));
+            enemiesToSpawn.remove(0);
+            if(enemiesToSpawn.isEmpty())return;
         }
     }
 

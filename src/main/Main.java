@@ -2,6 +2,7 @@ package main;
 
 import com.sun.javafx.geom.Vec2f;
 import entities.*;
+import entities.levels.Level1;
 import graphics.GamePanel;
 
 import javax.swing.*;
@@ -37,13 +38,10 @@ public class Main extends Thread{
     }
 
     private static void loadStuff(){
-        player = new Player(Player.WALK_BORDER_LEFT,panel.getHeight()-Player.PLAYER_SIZE);
-        activeEnemies.add(new Enemy(0,700));
-        activeEnemies.add(new Enemy(100,Main.panel.getHeight()-Player.PLAYER_SIZE));
         upgrades[0] = new Upgrade("Horn", null, 10); //todo: update this stuff
         upgrades[1] = new Upgrade("Health", null, 10);
         upgrades[2] = new Upgrade("Speed", null, 10);
-        level = new Level();
+        level = new Level1();
     }
 
     private void startDataSetup(){
@@ -86,6 +84,7 @@ public class Main extends Thread{
                 }
             }
         }
+        level.update();
         for(Enemy e : activeEnemies){
             e.update();
         }
