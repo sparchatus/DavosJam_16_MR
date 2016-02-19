@@ -117,6 +117,7 @@ public class Player extends Entity{
     }
 
     private void move(int i){
+        System.out.println("player x:" + x);
         moving=true;
         if(i==1){
             speed=Math.abs(speed);

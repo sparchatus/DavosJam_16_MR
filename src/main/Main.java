@@ -95,6 +95,7 @@ public class Main extends Thread{
         }
         for(HostileParticle r : remove){
             hostileParticles.remove(r);
+            System.out.println("Particle removed!");
         }
         player.update();
         mouseClick = null;

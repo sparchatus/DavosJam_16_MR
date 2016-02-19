@@ -2,6 +2,7 @@ package entities;
 
 import Tiles.Tile;
 import Tiles.TileTypes;
+import entities.levels.Level2;
 import main.Main;
 import util.PictureImport;
 
@@ -66,6 +67,9 @@ public class Level extends Entity{
 
     @Override
     public void update() {
+        if(Main.player.x>END){
+            Main.level = new Level2();
+        }
         if(enemiesToSpawn.isEmpty())return;
         while(Main.player.x>enemiesToSpawn.get(0).spawnPlace){
             Main.activeEnemies.add(enemiesToSpawn.get(0));
