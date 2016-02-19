@@ -63,4 +63,8 @@ public class GamePanel extends JPanel {
             }
         }catch (Exception e){}
     }
+
+    private void renderSpecial(Graphics g){
+
+    }
 }

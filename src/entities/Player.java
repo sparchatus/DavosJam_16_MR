@@ -135,7 +135,6 @@ public class Player extends Entity{
                 }
             }
         }
-        System.out.println(x);
     }
 
     public void startAttack(){
@@ -193,7 +192,7 @@ public class Player extends Entity{
     private void jump(){
         if(Level.getSolid(x+50, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE-50, y + sizeY + 1)){
             System.out.println("jump!");
-            ySpeed = -40;
+            ySpeed = -35;
         }
     }
 
