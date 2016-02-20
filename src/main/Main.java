@@ -48,9 +48,10 @@ public class Main extends Thread{
         upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 350);
         upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 200);
         prince = new Prince();
+        startDataSetup();
     }
 
-    private void startDataSetup(){
+    private static void startDataSetup(){
         won=false;
         restart=false;
         running = false;
@@ -59,10 +60,10 @@ public class Main extends Thread{
     }
 
     public void run(){
+        Start.animateStart();
         do {
             System.out.println("start of game loop");
             startDataSetup();
-            Start.animateStart();
             System.out.println("entering while");
             while (running) {
                 if (System.currentTimeMillis() > lastCycleTime + 1000 / TICKS) {

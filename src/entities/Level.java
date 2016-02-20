@@ -28,18 +28,25 @@ public class Level extends Entity{
         super(0,0,0,0,null);
         TILE_SCREEN_SIZE = Main.panel.getHeight()/HEIGHT;
         END = end;
-        earth = new Tile(PictureImport.importImage("Tile_Earth.png"), true);
-        floor = new Tile(PictureImport.importImage("Tile_Floor.png"), false);
-        sky = new Tile(PictureImport.importImage("Tile_Sky.png"), false);
-        castleB = new Tile(PictureImport.importImage("Castle_bottom_1.png"), false);
-        castleT = new Tile(PictureImport.importImage("Castle_Texture.png"), false);
-        doorBL = new Tile(PictureImport.importImage("Door_Bottom_Left.png"), false);
-        doorBR = new Tile(PictureImport.importImage("Door_Bottom_Right.png"), false);
-        doorTL = new Tile(PictureImport.importImage("Door_Top_Left.png"), false);
-        doorTR = new Tile(PictureImport.importImage("Door_Top_Right.png"), false);
-        castleW = new Tile(PictureImport.importImage("Castle_Window.png"), false);
-        castleJ = new Tile(PictureImport.importImage("Castle_Jail.png"), false);
-        castleF = new Tile(PictureImport.importImage("Castle_Floor.png"), false);
+        if(earth==null) {
+            earth = new Tile(PictureImport.importImage("Tile_Earth.png"), true);
+            floor = new Tile(PictureImport.importImage("Tile_Floor.png"), false);
+            sky = new Tile(PictureImport.importImage("Tile_Sky.png"), false);
+            castleB = new Tile(PictureImport.importImage("Castle_bottom_1.png"), false);
+            castleT = new Tile(PictureImport.importImage("Castle_Texture.png"), false);
+            doorBL = new Tile(PictureImport.importImage("Door_Bottom_Left.png"), false);
+            doorBR = new Tile(PictureImport.importImage("Door_Bottom_Right.png"), false);
+            doorTL = new Tile(PictureImport.importImage("Door_Top_Left.png"), false);
+            doorTR = new Tile(PictureImport.importImage("Door_Top_Right.png"), false);
+            castleW = new Tile(PictureImport.importImage("Castle_Window.png"), false);
+            castleJ = new Tile(PictureImport.importImage("Castle_Jail.png"), false);
+            castleF = new Tile(PictureImport.importImage("Castle_Floor.png"), false);
+        }
+        Main.activeEnemies = new ArrayList<>();
+        enemiesToSpawn = new ArrayList<>();
+        Main.rainbows = new ArrayList<>();
+        Main.hostileParticles = new ArrayList<>();
+        rCL=0;
         setTiles(map);
     }
 
@@ -72,7 +79,7 @@ public class Level extends Entity{
                 }else if(t==0xffff006e){
                     levelMap[i][j]=castleW;
                 }else if(t==0xffffd800){
-                    levelMap[i][j]=castleW;
+                    levelMap[i][j]=castleF;
                 }else{
                     levelMap[i][j]=sky;
                 }
@@ -107,7 +114,6 @@ public class Level extends Entity{
                 case 5:Main.won();
             }
             Main.player.setBack();
-            rCL=0;
         }
         if(enemiesToSpawn.isEmpty())return;
         while(Main.player.x>enemiesToSpawn.get(0).spawnPlace){
