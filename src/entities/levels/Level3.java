@@ -8,7 +8,7 @@ import main.Main;
 public class Level3 extends Level {
 
     public Level3() {
-        super(5260, "Level_3.png");
+        super(5200, "Level_3.png");
         level = 3;
         enemiesInGame();
     }

@@ -59,14 +59,12 @@ public class Main extends Thread{
     }
 
     public void run(){
-        //Start.animateStart();
+        Start.animateStart();
         do {
-            won();
             System.out.println("start of game loop");
             startDataSetup();
             System.out.println("entering while");
             while (running) {
-                System.out.println("tick:"+tick);
                 if (System.currentTimeMillis() > lastCycleTime + 1000 / TICKS) {
                     lastCycleTime = System.currentTimeMillis();
                     update();

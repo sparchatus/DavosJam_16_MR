@@ -19,7 +19,7 @@ public class Level extends Entity{
     private final int HEIGHT = 6;
     public static int length;
     public static int TILE_SCREEN_SIZE;
-    public static Tile earth, floor, sky, castleB, castleT, doorBL, castleW, castleJ, castleF, doorBR, doorTL, doorTR;
+    public static Tile earth, floor, sky, castleB, castleT, doorBL, castleW, castleJ, castleS, castleF, doorBR, doorTL, doorTR;
     public static Tile[][] levelMap = new Tile[6][20];
     public static int level;
 
@@ -41,6 +41,7 @@ public class Level extends Entity{
             castleW = new Tile(PictureImport.importImage("Castle_Window.png"), false);
             castleJ = new Tile(PictureImport.importImage("Castle_Jail.png"), false);
             castleF = new Tile(PictureImport.importImage("Castle_Floor.png"), false);
+            castleS = new Tile(PictureImport.importImage("Castle_Texture.png"), true);
         }
         Main.activeEnemies = new ArrayList<>();
         enemiesToSpawn = new ArrayList<>();
@@ -80,6 +81,8 @@ public class Level extends Entity{
                     levelMap[i][j]=castleW;
                 }else if(t==0xffffd800){
                     levelMap[i][j]=castleF;
+                }else if(t==0xff0094ff){
+                    levelMap[i][j]=castleS;
                 }else{
                     levelMap[i][j]=sky;
                 }

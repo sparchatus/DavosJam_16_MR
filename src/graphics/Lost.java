@@ -15,7 +15,7 @@ public class Lost {
         curImg = PictureImport.importImage("Lost_1.png");
         Main.panel.repaint();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 public class HostileParticle extends Entity{
     private static int SIZE = 50;
     private final int DMG;
-    private final int SPEED = 10;
+    private final int SPEED = 15;
     private int speed;
     private static BufferedImage img1, img2, img3;
     private static BufferedImage _img1, _img2, _img3;
@@ -26,15 +26,15 @@ public class HostileParticle extends Entity{
         if(Main.rng(0.6f)){
             if(direction == 1) bi = _img1;
             else bi=img1;
-            DMG=1200;
+            DMG= (int) (1200*1.2f*Level.level);
         }else if(Main.rng(0.75f)){
             if(direction == 1) bi = _img2;
             else bi=img2;
-            DMG=3000;
+            DMG= (int) (3000*1.2f*Level.level);
         }else{
             if(direction == 1) bi = _img3;
             else bi=img3;
-            DMG=6000;
+            DMG= (int) (6000*1.2f*Level.level);
         }
         speed = direction*SPEED;
     }

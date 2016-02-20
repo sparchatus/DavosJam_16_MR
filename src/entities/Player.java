@@ -120,7 +120,7 @@ public class Player extends Entity{
             if(speed > 0)Main.rainbows.add(new Rainbow(x,(int)( y + 140 + 20 * (Math.random() - 0.5))));
             else if(speed < 0)Main.rainbows.add(new Rainbow(x + 220, (int)( y + 140 + 20 * (Math.random() - 0.5))));
         }
-        life+=30;
+        life+=30*Math.pow(1.2f, Main.upgrades[1].level);
         if(life > maxLife){
             life = maxLife;
         }else if(life<=0){
@@ -138,6 +138,7 @@ public class Player extends Entity{
                 }
             }
         }
+        System.out.println(x);
     }
 
     public void startAttack(){

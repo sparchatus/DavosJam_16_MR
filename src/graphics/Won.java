@@ -30,7 +30,7 @@ public class Won {
             curImg=bf[i];
             Main.panel.repaint();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -40,8 +40,8 @@ public class Won {
         pfy=true;
         curImg=bf[bf.length-1];
         while(x>0){
-            x-=30;
-            y-=8;
+            x-=20;
+            y-=6;
             Main.panel.repaint();
             try {
                 Thread.sleep(100);
