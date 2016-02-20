@@ -53,12 +53,13 @@ public class GamePanel extends JPanel {
         // render life
         g.setColor(Color.BLACK);
         g.drawString(Main.money + "$", this.getWidth() - 150, Upgrade.y + (Upgrade.size + g.getFont().getSize()) / 2);
-        if(Main.player!=null)Main.player.render(g);
-        Main.prince.render(g);
+
         Main.horn.render(g);
         for(Enemy e:Main.activeEnemies){
             e.render(g);
         }
+        if(Main.player!=null)Main.player.render(g);
+        Main.prince.render(g);
         try {
             for (int i = 0; i < Main.upgrades.length; ++i) {
                 Main.upgrades[i].x = i * getWidth() / Main.upgrades.length + Upgrade.size / 2;

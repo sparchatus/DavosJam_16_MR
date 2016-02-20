@@ -138,7 +138,6 @@ public class Player extends Entity{
                 }
             }
         }
-        System.out.println(x);
     }
 
     public void startAttack(){

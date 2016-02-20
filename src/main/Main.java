@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Main extends Thread{
-    public static JFrame frame = new JFrame("MASTERRACE");
+    public static JFrame frame = new JFrame("UNICORN MAN - MOVE WITH A AND D, JUMP WITH SPACE, MOUSE TO ATTACK");
     public static GamePanel panel;
     private static long lastCycleTime = 0;
     public static Horn horn = new Horn();
