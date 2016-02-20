@@ -13,19 +13,23 @@ public class Start {
 
     public static void animateStart(){
         active = true;
+        Main.running = false;
         curImg = PictureImport.importImage("default.png");
-        BufferedImage bf[]= new BufferedImage[1];
+        BufferedImage bf[]= new BufferedImage[4];
+        bf[0]=PictureImport.importImage("Begin_1.png");
+        bf[1]=PictureImport.importImage("Begin_2.png");
+        bf[2]=PictureImport.importImage("Begin_3.png");
+        bf[3]=PictureImport.importImage("Begin_4.png");
         for(BufferedImage i:bf){
             curImg=i;
             Main.panel.repaint();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         active = false;
-        Main.running=true;
     }
 
     public static void render(Graphics g){

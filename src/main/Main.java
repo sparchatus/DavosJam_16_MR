@@ -48,24 +48,25 @@ public class Main extends Thread{
         upgrades[1] = new Upgrade("Health", PictureImport.importImage("Upgrade_Health.png"), 350);
         upgrades[2] = new Upgrade("Speed", PictureImport.importImage("Upgrade_Speed.png"), 200);
         prince = new Prince();
-        startDataSetup();
     }
 
     private static void startDataSetup(){
         won=false;
         restart=false;
-        running = false;
+        running = true;
         tick = 0;
         level = new Level1();
     }
 
     public void run(){
-        Start.animateStart();
+        //Start.animateStart();
         do {
             System.out.println("start of game loop");
             startDataSetup();
             System.out.println("entering while");
             while (running) {
+                won();
+                System.out.println("tick:"+tick);
                 if (System.currentTimeMillis() > lastCycleTime + 1000 / TICKS) {
                     lastCycleTime = System.currentTimeMillis();
                     update();
@@ -93,8 +94,8 @@ public class Main extends Thread{
     }
 
     private synchronized void update(){
-        if(player.life==0){
-            Main.lost();
+        if(Player.life==0){
+            lost();
         }
         if(mouseClick != null) {
             for (Upgrade u : upgrades) {
