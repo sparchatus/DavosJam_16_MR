@@ -12,16 +12,12 @@ public class Lost {
 
     public static void animateLoss(){
         active = true;
-        curImg = PictureImport.importImage("default.png");
-        BufferedImage bf = PictureImport.importImage("default.png");
-        for(BufferedImage i:bf){
-            curImg=i;
-            Main.panel.repaint();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        curImg = PictureImport.importImage("Lost_1.png");
+        Main.panel.repaint();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         active = false;
     }

@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Main extends Thread{
-    public static JFrame frame = new JFrame("MASTERRACE");
+    public static JFrame frame = new JFrame("UNICORN MAN - MOVE WITH A AND D, JUMP WITH SPACE, MOUSE TO ATTACK");
     public static GamePanel panel;
     private static long lastCycleTime = 0;
     public static Horn horn = new Horn();
@@ -61,11 +61,11 @@ public class Main extends Thread{
     public void run(){
         //Start.animateStart();
         do {
+            won();
             System.out.println("start of game loop");
             startDataSetup();
             System.out.println("entering while");
             while (running) {
-                won();
                 System.out.println("tick:"+tick);
                 if (System.currentTimeMillis() > lastCycleTime + 1000 / TICKS) {
                     lastCycleTime = System.currentTimeMillis();
@@ -91,6 +91,7 @@ public class Main extends Thread{
             Restart.askRestart();
             System.out.println("out of restart with:" + restart);
         }while(restart);
+        System.exit(0);
     }
 
     private synchronized void update(){
