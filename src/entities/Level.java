@@ -21,7 +21,7 @@ public class Level extends Entity{
     public static int length;
     private final int TILE_SIDE = 64;
     public static int TILE_SCREEN_SIZE;
-    private static Tile earth, floor, sky, castleB, castleT, doorBL, castleW, castleJ, doorBR, doorTL, doorTR;
+    public static Tile earth, floor, sky, castleB, castleT, doorBL, castleW, castleJ, doorBR, doorTL, doorTR;
     public static Tile[][] levelMap = new Tile[6][20];
     public static int level;
 

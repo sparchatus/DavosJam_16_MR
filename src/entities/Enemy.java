@@ -18,8 +18,14 @@ public class Enemy extends Entity{
     private final static BufferedImage img2 = PictureImport.importImage("Enemy_2.png");
 
 
-    public Enemy(int xCoordinate, int yCoordinate, int spawn) {
-        super(xCoordinate, yCoordinate, SIZE,SIZE, img1);
+    public Enemy(int xCoordinate, int spawn) {
+        super(xCoordinate, 0, SIZE,SIZE, img1);
+        for(int i = Level.levelMap.length - 1; i >= 0; --i){
+            if(Level.levelMap[i][(x + (SIZE / 2)) / Level.TILE_SCREEN_SIZE] == Level.floor){
+                y = (int)((i - .4f) * Level.TILE_SCREEN_SIZE);
+            }
+        }
+
         spawnPlace = spawn;
     }
 
