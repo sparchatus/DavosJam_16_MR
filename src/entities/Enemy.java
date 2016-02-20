@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 public class Enemy extends Entity{
     private long lastShotTime = 0;
     private int shootCooldown = 500;
-    private static final int RANGE = 500;
+    private static final int RANGE = 700;
     public static int SIZE = (int)(Player.PLAYER_SIZE*0.75);
     public final int spawnPlace;
     public boolean dead = false;
@@ -57,7 +57,7 @@ public class Enemy extends Entity{
     }
 
     private void shoot(){
-        byte b = (x + sizeX / 2 - Main.player.x + Main.player.sizeX / 2 > 0) ? (byte)-1 : 1;
+        byte b = (x + sizeX / 2 - Main.player.x - Main.player.sizeX / 2 > 0) ? (byte)-1 : 1;
         if(b == 1)Main.hostileParticles.add(new HostileParticle(x + sizeX, y, b));
         else Main.hostileParticles.add(new HostileParticle(x, y, b));
         lastShotTime = System.currentTimeMillis();
