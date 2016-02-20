@@ -15,7 +15,7 @@ public class Player extends Entity{
     private static boolean moving = false;
     private BufferedImage img, img1, _img, _img1, _attackingImg, attackingImg;
     long lastImgChange = 0;
-    private final int ATTACK_DURATION = Main.TICKS;
+    private final int ATTACK_DURATION = Main.TICKS / 2;
     private final int ATTACK_COOLDOWN = Main.TICKS*2;
     public static int PLAYER_SIZE=256;
     public static int WALK_BORDER_LEFT = PLAYER_SIZE/2;
@@ -30,7 +30,7 @@ public class Player extends Entity{
     private final int START_X=WALK_BORDER_LEFT;
     private final int START_Y=Main.panel.getHeight()-Player.PLAYER_SIZE-Level.TILE_SCREEN_SIZE;
 
-    private int lastAttackChange=0;
+    private int lastAttackChange=-ATTACK_COOLDOWN;
     public static boolean attacking = false;
 
     public Player(int xCoordinate, int yCoordinate){
@@ -100,7 +100,9 @@ public class Player extends Entity{
                 attacking = false;
                 if(speed > 0) bi = img;
                 else bi = _img;
-            }
+            } else if(speed > 0){
+                bi = attackingImg;
+            } else bi = _attackingImg;
         }
         super.render(g);
     }
@@ -194,7 +196,7 @@ public class Player extends Entity{
     private void jump(){
         if(Level.getSolid(x+50, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE/2, y + sizeY + 1)||Level.getSolid(x+PLAYER_SIZE-50, y + sizeY + 1)){
             System.out.println("jump!");
-            ySpeed = -28;
+            ySpeed = -30;
         }
     }
 

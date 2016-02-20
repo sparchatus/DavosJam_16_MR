@@ -13,7 +13,7 @@ public class Lost {
     public static void animateLoss(){
         active = true;
         curImg = PictureImport.importImage("default.png");
-        BufferedImage bf[]= new BufferedImage[1];
+        BufferedImage bf = PictureImport.importImage("default.png");
         for(BufferedImage i:bf){
             curImg=i;
             Main.panel.repaint();
