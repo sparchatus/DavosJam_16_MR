@@ -1,0 +1,12 @@
+earth: 0x000000
+floor: 0xffffff
+sky: 0xaaaaaa
+castle bottom: 0x00ff00
+castle wall: 0x0026ff
+door bottom left: 0x00ffff
+door bottom right: 0xb6ff00
+door top left: 0xff6a00
+door top right: 0xff0000
+castle jail: 0x7f006e
+castle window:
+carpet: 0xffd800

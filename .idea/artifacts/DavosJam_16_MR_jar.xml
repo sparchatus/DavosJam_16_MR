@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="DavosJam_16_MR:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DavosJam_16_MR_jar</output-path>
+    <root id="root">
+      <element id="archive" name="DavosJam_16_MR.jar">
+        <element id="module-output" name="DavosJam_16_MR" />
+      </element>
+      <element id="directory" name="res">
+        <element id="dir-copy" path="$PROJECT_DIR$/res" />
+      </element>
+    </root>
+  </artifact>
+</component>
