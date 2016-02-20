@@ -108,7 +108,7 @@ public class Main extends Thread{
                         Player.speed += Player.speed / Math.abs(Player.speed) * 2;
                     } else if(u.NAME.equals("Health")){
                         Player.maxLife *= 1.2f;
-                        Player.life *= 1.2f;
+                        Player.life *= 1.5f;
                     } else{
                         if(Horn.h == 1){
                             Horn.h = 2;
